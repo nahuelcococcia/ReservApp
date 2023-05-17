@@ -1,6 +1,10 @@
 from django.db import models
+from datetime import datetime
 
 
-# Create your models here.
-class Modelo1(models.Model):
-    campo1 = models.CharField(max_length=50)
+class Coordinator(models.Model):
+    name = models.CharField(max_length=50)
+    lastname = models.CharField(max_length=50)
+    dni_number = models.IntegerField()
+    created_at = models.DateTimeField(default=datetime.now)
+    is_active = models.BooleanField(default=True)
