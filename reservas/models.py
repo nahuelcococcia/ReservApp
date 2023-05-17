@@ -11,3 +11,9 @@ class Service(models.Model):
     description = models.CharField(max_length=200)
     price = models.IntegerField()
     is_active = models.BooleanField(default=True)
+
+
+class Client(models.Model):
+    name = models.CharField(max_length=55)
+    last_name = models.CharField(max_length=55)
+    is_active = models.BooleanField(default=True)

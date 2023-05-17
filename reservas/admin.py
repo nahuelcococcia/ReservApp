@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Service
+from .models import Service, Client
+
 
 # Register your models here.
 
@@ -8,4 +9,10 @@ from .models import Service
 class ServiceAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'description', 'price', 'is_active')
     search_fields = ['name']
+    list_filter = ['is_active']
+
+@admin.register(Client)
+class ClientAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'last_name', 'is_active')
+    search_fields = ('name', 'last_name')
     list_filter = ['is_active']
