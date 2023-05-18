@@ -17,3 +17,9 @@ class Client(models.Model):
     name = models.CharField(max_length=55)
     last_name = models.CharField(max_length=55)
     is_active = models.BooleanField(default=True)
+
+class Empleado(models.Model):
+    nombre = models.CharField(max_length=100)
+    apellido = models.CharField(max_length=100)
+    numero_legajo = models.IntegerField(default=0)
+    activo = models.BooleanField(default=True)
