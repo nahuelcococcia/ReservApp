@@ -23,3 +23,13 @@ class Empleado(models.Model):
     apellido = models.CharField(max_length=100)
     numero_legajo = models.IntegerField(default=0)
     activo = models.BooleanField(default=True)
+
+
+class ReserveService(models.Model):
+    creation_date = models.DateField(auto_now_add=True)
+    reservation_date = models.DateField()
+    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    # responsible = models.ForeignKey(Coordinador, on_delete=models.CASCADE)
+    employee = models.ForeignKey(Empleado, on_delete=models.CASCADE)
+    service = models.ForeignKey(Service, on_delete=models.CASCADE)
+    price = models.IntegerField(default=0)
