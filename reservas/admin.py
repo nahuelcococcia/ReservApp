@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Service, Client, ReserveService
+from .models import Service, Client, ReserveService, Employee
 
 
 # Register your models here.
@@ -18,11 +18,11 @@ class ClientAdmin(admin.ModelAdmin):
     list_filter = ['is_active']
 
 
-@admin.register(Empleado)
+@admin.register(Employee)
 class EmpleadoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nombre', 'apellido', 'numero_legajo', "activo")
-    search_fields = ('nombre', 'apellido')
-    list_filter = ['activo']
+    list_display = ('id', 'name', 'lastname', 'file_number', "is_active")
+    search_fields = ('name', 'lastname')
+    list_filter = ['is_active']
 
 
 @admin.register(ReserveService)
