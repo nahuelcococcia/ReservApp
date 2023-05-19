@@ -18,8 +18,16 @@ class ClientAdmin(admin.ModelAdmin):
     list_filter = ['is_active']
 
 
+@admin.register(Empleado)
+class EmpleadoAdmin(admin.ModelAdmin):
+    list_display = ('id', 'nombre', 'apellido', 'numero_legajo', "activo")
+    search_fields = ('nombre', 'apellido')
+    list_filter = ['activo']
+
+
 @admin.register(ReserveService)
 class ReserveServiceAdmin(admin.ModelAdmin):
     list_display = ('id', 'creation_date', 'reservation_date', 'client', 'employee', 'service', 'price')
     search_fields = ['client', 'employee', 'service']
+
 
