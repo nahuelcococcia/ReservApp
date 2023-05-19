@@ -26,9 +26,20 @@ class Empleado(models.Model):
     activo = models.BooleanField(default=True)
 
 
+
 class Coordinator(models.Model):
     name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     dni_number = models.IntegerField()
     created_at = models.DateTimeField(default=datetime.now)
     is_active = models.BooleanField(default=True)
+
+class ReserveService(models.Model):
+    creation_date = models.DateField(auto_now_add=True)
+    reservation_date = models.DateField()
+    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    # responsible = models.ForeignKey(Coordinador, on_delete=models.CASCADE)
+    employee = models.ForeignKey(Empleado, on_delete=models.CASCADE)
+    service = models.ForeignKey(Service, on_delete=models.CASCADE)
+    price = models.IntegerField(default=0)
+
