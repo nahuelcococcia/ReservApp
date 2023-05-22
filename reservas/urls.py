@@ -1,9 +1,10 @@
 from django.contrib import admin
 from django.urls import path
-from .views import index
+from reservas import views
 
 urlpatterns = [
-    path('home/', index),
+    path('home/', views.index, name="home"),
+    path('employee/new/', views.employee_register), 
     
     
 ]
