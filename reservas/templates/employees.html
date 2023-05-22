@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block 'content' %}
+    <div class="p-5">
+        {% if employees %}
+            <h4 class="p-3">Empleados registrados </h4>
+            {% include 'employees_table.html' %}
+        {% else %}
+            <h2>No hay empleados registrados</h2>
+    {% endif %}
+    </div>
+
+{% endblock %}
