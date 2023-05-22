@@ -11,6 +11,7 @@ def employee_register(request):
     if request.method == 'POST':
         form = EmployeeForm(request.POST)
         if form.is_valid():
+            form.save()
             return redirect('home')  # Redirect to a success page after registration
     form = EmployeeForm()
     return render(request, 'employee_register.html', {
