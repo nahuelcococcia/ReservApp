@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import EmployeeForm
+from .models import Employee
 
 # Create your views here.
 def index(request):
@@ -16,3 +17,11 @@ def employee_register(request):
         'form': form,
          "submit": "Registrar Empleado"
          })
+
+def employee_activate(request, id):
+    employee = Employee.objects.get(id=id)
+    employee.is_active = True
+    employee.save()
+    message = "El empleado ha sido activado correctamente."
+
+    return render(request, 'employee_activate.html', {'message': message})
