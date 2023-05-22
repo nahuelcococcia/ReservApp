@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Service, Client, ReserveService, Employee
+from .models import Service, Client, ReserveService, Employee, Coordinator
 
 
 # Register your models here.
@@ -31,3 +31,8 @@ class ReserveServiceAdmin(admin.ModelAdmin):
     search_fields = ['client', 'employee', 'service']
 
 
+@admin.register(Coordinator)
+class CoordinatorAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'lastname', 'dni_number', "created_at", "is_active")
+    search_fields = ('name', 'lastname')
+    list_filter = ['is_active']
