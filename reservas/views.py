@@ -49,3 +49,9 @@ def employee_update(request, employee_id):
         'submit': 'Actualizar'
     })
 
+  
+def employee_deactivate(request, employee_id):
+    employee = Employee.objects.get(id=employee_id)
+    employee.is_active = False
+    employee.save()
+    return HttpResponse('<h1> Se desactivo con exito </h1>')
