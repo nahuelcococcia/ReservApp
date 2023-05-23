@@ -7,6 +7,7 @@ from .models import Employee
 def index(request):
     return HttpResponse("<h1> Hola Mundo </h1>")
 
+
 def employee_register(request):
     if request.method == 'POST':
         form = EmployeeForm(request.POST)
@@ -16,8 +17,15 @@ def employee_register(request):
     form = EmployeeForm()
     return render(request, 'employee_register.html', {
         'form': form,
-         "submit": "Registrar Empleado"
-         })
+        "submit": "Registrar Empleado"
+    })
+
+
+def employees_view(request):
+    employees = Employee.objects.all()
+
+    return render(request, 'employees.html', {'employees': employees})
+
 
 def employee_activate(request, id):
     employee = Employee.objects.get(id=id)
