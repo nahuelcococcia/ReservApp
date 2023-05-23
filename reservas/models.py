@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import  datetime
+from datetime import datetime
 
 
 # Create your models here.
@@ -22,6 +22,8 @@ class Employee(models.Model):
     file_number = models.IntegerField(default=0)
     is_active = models.BooleanField(default=True)
 
+    def fullname(self):
+        return f'{self.name} {self.lastname}'
 
 
 class Coordinator(models.Model):
@@ -31,6 +33,7 @@ class Coordinator(models.Model):
     created_at = models.DateTimeField(default=datetime.now)
     is_active = models.BooleanField(default=True)
 
+
 class ReserveService(models.Model):
     creation_date = models.DateField(auto_now_add=True)
     reservation_date = models.DateField()
@@ -39,4 +42,3 @@ class ReserveService(models.Model):
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
     price = models.IntegerField(default=0)
-
