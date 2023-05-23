@@ -16,15 +16,12 @@ class EmployeeForm(ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': 'form-control',
-                'style': 'width: 50%;'
             }),
             'lastname': forms.TextInput(attrs={
                 'class': 'form-control',
-                'style': 'width: 50%;'
             }),
             'file_number': forms.TextInput(attrs={
                 'class': 'form-control',
-                'style': 'width: 50%;',
                 "type" : "number"
             }),
 

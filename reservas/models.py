@@ -12,7 +12,7 @@ class Service(models.Model):
 
 class Client(models.Model):
     name = models.CharField(max_length=55)
-    last_name = models.CharField(max_length=55)
+    lastname = models.CharField(max_length=55)
     is_active = models.BooleanField(default=True)
 
 
@@ -28,7 +28,7 @@ class Employee(models.Model):
 
 class Coordinator(models.Model):
     name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
+    lastname = models.CharField(max_length=50)
     dni_number = models.IntegerField()
     created_at = models.DateTimeField(default=datetime.now)
     is_active = models.BooleanField(default=True)
