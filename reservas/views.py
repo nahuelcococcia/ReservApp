@@ -67,7 +67,8 @@ def employee_delete(request, employee_id):
 
     return redirect("employee-list")
 
-  
+
+# COORDINATOR SECTION
 def coordinators_view(request):
     coordinators = Coordinator.objects.all()
     
@@ -78,12 +79,12 @@ def coordinators_view(request):
 
 def coordinator_register(request):
     if request.method == 'POST':
-        form = CoordinatorFormRegister(request.POST)
+        form = CoordinatorForm(request.POST)
         if form.is_valid():
             form.save()
             
-            return redirect('home')  # Redirect to a success page after registration
-    form = CoordinatorFormRegister()
+            return redirect('coordinators-list')  # Redirect to a success page after registration
+    form = CoordinatorForm()
     
     return render(request, 'coordinator_register.html', {
         'form': form,
@@ -94,13 +95,13 @@ def coordinator_register(request):
 def coordinator_update(request, coordinator_id):
     coordinator = Coordinator.objects.get(id=coordinator_id)
     if request.method == 'POST':
-        form = CoordinatorFormUpdate(request.POST, instance=coordinator)
+        form = CoordinatorForm(request.POST, instance=coordinator)
         if form.is_valid():
             form.save()
             
-            return redirect("list")
+            return redirect("coordinators-list")
           
-    form = CoordinatorFormUpdate(instance=coordinator)
+    form = CoordinatorForm(instance=coordinator)
     
     return render(request, 'coordinator_update.html', {
         'form': form,
