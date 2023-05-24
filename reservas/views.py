@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import EmployeeForm
-from .models import Employee
+from .forms import EmployeeForm, CoordinatorForm
+from .models import Employee, Coordinator
+
 
 # Create your views here.
 def index(request):
@@ -17,10 +18,10 @@ def employee_register(request):
     form = EmployeeForm()
     return render(request, 'employee_register.html', {
         'form': form,
-         "submit": "Registrar Empleado"
-         })
+        "submit": "Registrar Empleado"
+    })
 
-  
+
 def employees_view(request):
     employees = Employee.objects.all()
     return render(request, 'employees.html', {'employees': employees})
@@ -32,8 +33,8 @@ def employee_activate(request, id):
     employee.save()
     message = "El empleado ha sido activado correctamente."
     return redirect("list")
-  
-  
+
+
 def employee_update(request, employee_id):
     employee = Employee.objects.get(id=employee_id)
     if request.method == 'POST':
@@ -49,7 +50,7 @@ def employee_update(request, employee_id):
         'submit': 'Actualizar'
     })
 
-  
+
 def employee_deactivate(request, employee_id):
     employee = Employee.objects.get(id=employee_id)
     employee.is_active = False
@@ -62,3 +63,19 @@ def employee_delete(request, employee_id):
     employee.delete()
 
     return redirect("list")
+
+
+def coordinator_update(request, coordinator_id):
+    coordinator = Coordinator.objects.get(id=coordinator_id)
+    if request.method == 'POST':
+        form = CoordinatorForm(request.POST, instance=coordinator)
+        if form.is_valid():
+            form.save()
+            # Por ahora solo muestra un mensaje pero lo mejor seria que lleve al listado
+            return redirect("list")
+
+    form = CoordinatorForm(instance=coordinator)
+    return render(request, 'coordinator_update.html', {
+        'form': form,
+        'submit': 'Actualizar'
+    })
