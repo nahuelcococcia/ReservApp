@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Employee
+from .models import Employee, Coordinator
 
 
 class EmployeeForm(ModelForm):
@@ -16,16 +16,37 @@ class EmployeeForm(ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': 'form-control',
-                'style': 'width: 50%;'
             }),
             'lastname': forms.TextInput(attrs={
                 'class': 'form-control',
-                'style': 'width: 50%;'
             }),
             'file_number': forms.TextInput(attrs={
                 'class': 'form-control',
-                'style': 'width: 50%;',
                 "type" : "number"
             }),
 
+        }
+
+
+class CoordinatorForm(ModelForm):
+    class Meta:
+        model = Coordinator
+        fields = ['name', 'lastname', 'dni_number', 'created_at', 'is_active']
+        labels = {
+            'name': "Nombre",
+            'lastname': "Apellido",
+            'dni_number': "Nro. DNI",
+            'is_active': "Activo"
+        }
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-control'
+            }),
+            'lastname': forms.TextInput(attrs={
+                'class': 'form-control'
+            }),
+            'dni_number': forms.TextInput(attrs={
+                'class': 'form-control',
+                'type': 'number'
+            })
         }
