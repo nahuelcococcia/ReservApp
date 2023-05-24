@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import EmployeeForm
+from .forms import EmployeeForm, CoordinatorForm
 from .models import Employee
 
 # Create your views here.
@@ -55,3 +55,16 @@ def employee_deactivate(request, employee_id):
     employee.is_active = False
     employee.save()
     return HttpResponse('<h1> Se desactivo con exito </h1>')
+
+
+def coordinator_register(request):
+    if request.method == 'POST':
+        form = CoordinatorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')  # Redirect to a success page after registration
+    form = CoordinatorForm()
+    return render(request, 'coordinator_register.html', {
+        'form': form,
+        "submit": "Registrar Coordinador"
+    })
