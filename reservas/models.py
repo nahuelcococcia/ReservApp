@@ -33,7 +33,7 @@ class Coordinator(models.Model):
     is_active = models.BooleanField(default=True)
 
     def fullname(self):
-        return f'{self.name} {self.last_name}'
+        return f'{self.name} {self.lastname}'
 
 
 class ReserveService(models.Model):
