@@ -16,22 +16,19 @@ class EmployeeForm(ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': 'form-control',
-                'style': 'width: 50%;'
             }),
             'lastname': forms.TextInput(attrs={
                 'class': 'form-control',
-                'style': 'width: 50%;'
             }),
             'file_number': forms.TextInput(attrs={
                 'class': 'form-control',
-                'style': 'width: 50%;',
                 "type" : "number"
             }),
 
         }
 
 
-class CoordinatorForm(ModelForm):
+class CoordinatorFormRegister(ModelForm):
     class Meta:
         model = Coordinator
         fields = ['name', 'lastname', 'dni_number']
@@ -60,5 +57,28 @@ class CoordinatorForm(ModelForm):
                 'min': '1000000',
                 'max': '46000000'
             }),
+        }
 
+
+ class CoordinatorFormUpdate(ModelForm):
+    class Meta:
+        model = Coordinator
+        fields = ['name', 'lastname', 'dni_number', 'created_at', 'is_active']
+        labels = {
+            'name': "Nombre",
+            'lastname': "Apellido",
+            'dni_number': "Nro. DNI",
+            'is_active': "Activo"
+        }
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-control'
+            }),
+            'lastname': forms.TextInput(attrs={
+                'class': 'form-control'
+            }),
+            'dni_number': forms.TextInput(attrs={
+                'class': 'form-control',
+                'type': 'number'
+            })
         }
