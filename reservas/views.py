@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import EmployeeForm
-from .models import Employee
+from .models import Employee, Coordinator
 
 # Create your views here.
 def index(request):
@@ -62,3 +62,8 @@ def employee_delete(request, employee_id):
     employee.delete()
 
     return redirect("list")
+
+
+def coordinators_view(request):
+    coordinators = Coordinator.objects.all()
+    return render(request, 'employees.html', {'coordinators': coordinators})

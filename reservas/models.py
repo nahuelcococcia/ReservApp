@@ -33,6 +33,9 @@ class Coordinator(models.Model):
     created_at = models.DateTimeField(default=datetime.now)
     is_active = models.BooleanField(default=True)
 
+    def fullname(self):
+        return f'{self.name} {self.lastname}'
+
 
 class ReserveService(models.Model):
     creation_date = models.DateField(auto_now_add=True)
