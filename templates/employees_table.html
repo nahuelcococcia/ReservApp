@@ -1,26 +1,39 @@
 <table class="table .table-sm text-center">
-  <thead>
+    <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Nombre Completo</th>
-      <th scope="col">Legajo</th>
-      <th scope="col">Esta activo </th>
+        <th scope="col">#</th>
+        <th scope="col">Nombre Completo</th>
+        <th scope="col">Legajo</th>
+        <th scope="col">Esta activo</th>
+        <th></th>
+        <th></th>
     </tr>
-  </thead>
-  <tbody>
+    </thead>
+    <tbody>
     {% for employee in employees %}
-    <tr>
-      <th class="py-3" >{{ employee.id }}</th>
-      <td class="py-3">{{  employee.fullname }}</td>
-      <td class="py-3">{{ employee.file_number }}</td>
-      <td class="py-3">
-        {% if employee.is_active %}
-          <i class="fa-solid fa-square-check"></i>
-        {% else %}
-          <i class="fa-solid fa-rectangle-xmark"></i>
-        {% endif %}
-      </td>
+    <tr class="align-middle">
+        <th class="py-3">{{ employee.id }}</th>
+        <td class="py-3">{{ employee.fullname }}</td>
+        <td class="py-3">{{ employee.file_number }}</td>
+        <td class="py-3">
+            {% if employee.is_active %}
+            <i class="fa-solid fa-square-check fa-lg"></i>
+            {% else %}
+            <i class="fa-solid fa-rectangle-xmark fa-lg"></i>
+            {% endif %}
+        </td>
+        <td>
+            <a class="p-2" href="{% url 'employee-delete' employee.id %}" onclick="return confirm('¿Esta seguro de eliminar?')"><i class="fa-solid fa-trash-can fa-lg" style="color: #fd0808;"></i></a>
+            <a href="{% url 'employee-update' employee.id %}"><i class="fa-solid fa-pen-to-square fa-lg" style="color: #37ff00;"></i></a>
+        </td>
+        <td>
+            {% if employee.is_active %}
+            <a href="{% url 'employee-deactivate' employee.id %}" class="btn btn-danger" style="width:140px;">Desactivar</a>
+            {% else %}
+            <a href="{% url 'employee-activate' employee.id %}" class="btn btn-primary" style="width:140px;">Activar</a>
+            {% endif %}
+        </td>
     </tr>
     {% endfor %}
-  </tbody>
+    </tbody>
 </table>

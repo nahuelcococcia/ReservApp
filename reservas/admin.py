@@ -13,8 +13,8 @@ class ServiceAdmin(admin.ModelAdmin):
 
 @admin.register(Client)
 class ClientAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'last_name', 'is_active')
-    search_fields = ('name', 'last_name')
+    list_display = ('id', 'name', 'lastname', 'is_active')
+    search_fields = ('name', 'lastname')
     list_filter = ['is_active']
 
 
@@ -33,6 +33,6 @@ class ReserveServiceAdmin(admin.ModelAdmin):
 
 @admin.register(Coordinator)
 class CoordinatorAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'last_name', 'dni_number', "created_at", "is_active")
-    search_fields = ('name', 'last_name')
+    list_display = ('id', 'name', 'lastname', 'dni_number', "created_at", "is_active")
+    search_fields = ('name', 'lastname')
     list_filter = ['is_active']
