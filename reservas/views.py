@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import EmployeeForm
-from .models import Employee
+from .models import Employee, Coordinator
 
 # Create your views here.
 def index(request):
@@ -55,3 +55,10 @@ def employee_deactivate(request, employee_id):
     employee.is_active = False
     employee.save()
     return HttpResponse('<h1> Se desactivo con exito </h1>')
+
+
+def coordinators_view(request):
+    coordinators = Coordinator.objects.all()
+    return render(request, 'coordinators.html', {
+        'coordinators': coordinators
+    })

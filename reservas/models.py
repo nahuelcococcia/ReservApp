@@ -1,5 +1,4 @@
 from django.db import models
-from datetime import datetime
 
 
 # Create your models here.
@@ -30,8 +29,11 @@ class Coordinator(models.Model):
     name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     dni_number = models.IntegerField()
-    created_at = models.DateTimeField(default=datetime.now)
+    created_at = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
+
+    def fullname(self):
+        return f'{self.name} {self.last_name}'
 
 
 class ReserveService(models.Model):
