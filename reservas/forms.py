@@ -28,7 +28,39 @@ class EmployeeForm(ModelForm):
         }
 
 
-class CoordinatorForm(ModelForm):
+class CoordinatorFormRegister(ModelForm):
+    class Meta:
+        model = Coordinator
+        fields = ['name', 'lastname', 'dni_number']
+        labels = {
+            'name': 'Nombre',
+            'lastname': 'Apellido',
+            'dni_number': 'Numero de Dni',
+        }
+
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'style': 'width: 50%;',
+                'type': 'text'
+
+            }),
+            'lastname': forms.TextInput(attrs={
+                'class': 'form-control',
+                'style': 'width: 50%;',
+                'type': 'text'
+            }),
+            'dni_number': forms.TextInput(attrs={
+                'class': 'form-control',
+                'style': 'width: 50%;',
+                'type': 'number',
+                'min': '1000000',
+                'max': '46000000'
+            }),
+        }
+
+
+ class CoordinatorFormUpdate(ModelForm):
     class Meta:
         model = Coordinator
         fields = ['name', 'lastname', 'dni_number', 'created_at', 'is_active']

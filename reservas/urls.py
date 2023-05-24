@@ -9,8 +9,8 @@ urlpatterns = [
     path('employee/update/<int:employee_id>/', views.employee_update, name="employee-update"),
     path('employee/delete/<int:employee_id>/', views.employee_delete, name="employee-delete"),
     path('employee/deactivate/<int:employee_id>', views.employee_deactivate, name="employee-deactivate"),
-    path('employees/list/', views.employees_view),
-    path('coordinators/list/', views.coordinators_view, name="coordinators-list")
+    path('employees/list/', views.employees_view, name="employee-list"),
+    path('coordinator/new/', views.coordinator_register, name="coordinator-create"),
+    path('coordinators/list/', views.coordinators_view, name="coordinators-list"),
     path('coordinator/update/<int:coordinator_id>/', views.coordinator_update, name="coordinator-update")
-
 ]

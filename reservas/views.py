@@ -15,7 +15,7 @@ def employee_register(request):
         if form.is_valid():
             form.save()
             
-            return redirect('list')
+            return redirect('employee-list')
     form = EmployeeForm()
     
     return render(request, 'employee_register.html', {
@@ -23,7 +23,7 @@ def employee_register(request):
         "submit": "Registrar Empleado"
     })
 
-
+  
 def employees_view(request):
     employees = Employee.objects.all()
     return render(request, 'employees.html', {'employees': employees})
@@ -34,7 +34,7 @@ def employee_activate(request, id):
     employee.is_active = True
     employee.save()
     
-    return redirect("list")
+    return redirect("employee-list")
 
 
 def employee_update(request, employee_id):
@@ -44,7 +44,7 @@ def employee_update(request, employee_id):
         if form.is_valid():
             form.save()
             
-            return redirect("list")
+            return redirect("employee-list")
     form = EmployeeForm(instance=employee)
     
     return render(request, 'employee_update.html', {
@@ -58,14 +58,14 @@ def employee_deactivate(request, employee_id):
     employee.is_active = False
     employee.save()
     
-    return redirect("list")
+    return redirect("employee-list")
 
 
 def employee_delete(request, employee_id):
     employee = Employee.objects.get(id=employee_id)
     employee.delete()
 
-    return redirect("list")
+    return redirect("employee-list")
 
   
 def coordinators_view(request):
@@ -73,19 +73,34 @@ def coordinators_view(request):
     
     return render(request, 'coordinators.html', {
         'coordinators': coordinators
+    }) 
+
+
+def coordinator_register(request):
+    if request.method == 'POST':
+        form = CoordinatorFormRegister(request.POST)
+        if form.is_valid():
+            form.save()
+            
+            return redirect('home')  # Redirect to a success page after registration
+    form = CoordinatorFormRegister()
+    
+    return render(request, 'coordinator_register.html', {
+        'form': form,
+        "submit": "Registrar Coordinador"
     })
-  
+
   
 def coordinator_update(request, coordinator_id):
     coordinator = Coordinator.objects.get(id=coordinator_id)
     if request.method == 'POST':
-        form = CoordinatorForm(request.POST, instance=coordinator)
+        form = CoordinatorFormUpdate(request.POST, instance=coordinator)
         if form.is_valid():
             form.save()
             
             return redirect("list")
           
-    form = CoordinatorForm(instance=coordinator)
+    form = CoordinatorFormUpdate(instance=coordinator)
     
     return render(request, 'coordinator_update.html', {
         'form': form,
