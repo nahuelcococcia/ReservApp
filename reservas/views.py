@@ -107,3 +107,17 @@ def coordinator_update(request, coordinator_id):
         'form': form,
         'submit': 'Actualizar'
     })
+  
+ def coordinator_activate(request, coordinator_id):
+    coordinator = Coordinator.objects.get(id=coordinator_id)
+    coordinator.is_active = True
+    coordinator.save()
+    return redirect("coordinators-list")
+
+
+def coordinator_deactivate(request, coordinator_id):
+    coordinator = Coordinator.objects.get(id=coordinator_id)
+    coordinator.is_active = False
+    coordinator.save()
+    return redirect("coordinators-list")
+
