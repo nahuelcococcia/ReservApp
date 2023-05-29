@@ -27,7 +27,7 @@ class EmployeeForm(ModelForm):
 
         }
 
-
+        
 class CoordinatorForm(ModelForm):
     class Meta:
         model = Coordinator
@@ -55,3 +55,4 @@ class CoordinatorForm(ModelForm):
                 'max': '46000000'
             }),
         }
+        
