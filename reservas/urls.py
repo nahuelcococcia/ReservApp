@@ -12,5 +12,6 @@ urlpatterns = [
     path('employees/list/', views.employees_view, name="employee-list"),
     path('coordinator/new/', views.coordinator_register, name="coordinator-create"),
     path('coordinators/list/', views.coordinators_view, name="coordinators-list"),
-    path('coordinator/update/<int:coordinator_id>/', views.coordinator_update, name="coordinator-update")
+    path('coordinator/update/<int:coordinator_id>/', views.coordinator_update, name="coordinator-update"),
+    path('coordinator/delete/<int:coordinator_id>/', views.coordinator_delete, name="coordinator-delete"),
 ]

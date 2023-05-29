@@ -107,3 +107,10 @@ def coordinator_update(request, coordinator_id):
         'form': form,
         'submit': 'Actualizar'
     })
+
+
+def coordinator_delete(request, coordinator_id):
+    coordinator = Coordinator.objects.get(id=coordinator_id)
+    coordinator.delete()
+
+    return redirect("coordinators-list")
