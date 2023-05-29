@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import EmployeeForm
-from .models import Employee
-from .models import Coordinator
+from .forms import EmployeeForm, CoordinatorForm
+from .models import Employee, Coordinator
+
 
 # Create your views here.
 def index(request):
@@ -14,12 +14,14 @@ def employee_register(request):
         form = EmployeeForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')  # Redirect to a success page after registration
+            
+            return redirect('employee-list')
     form = EmployeeForm()
+    
     return render(request, 'employee_register.html', {
         'form': form,
-         "submit": "Registrar Empleado"
-         })
+        "submit": "Registrar Empleado"
+    })
 
   
 def employees_view(request):
@@ -31,42 +33,91 @@ def employee_activate(request, id):
     employee = Employee.objects.get(id=id)
     employee.is_active = True
     employee.save()
-    message = "El empleado ha sido activado correctamente."
-    return render(request, 'employee_activate.html', {'message': message})
-  
-  
+    
+    return redirect("employee-list")
+
+
 def employee_update(request, employee_id):
     employee = Employee.objects.get(id=employee_id)
     if request.method == 'POST':
         form = EmployeeForm(request.POST, instance=employee)
         if form.is_valid():
             form.save()
-            # Por ahora solo muestra un mensaje pero lo mejor seria que lleve al listado
-            return HttpResponse('<h1> Empleado actualizado </h1>')
-
+            
+            return redirect("employee-list")
     form = EmployeeForm(instance=employee)
-    return render(request, 'create_update_form.html', {
+    
+    return render(request, 'employee_update.html', {
         'form': form,
         'submit': 'Actualizar'
     })
 
-  
+
 def employee_deactivate(request, employee_id):
     employee = Employee.objects.get(id=employee_id)
     employee.is_active = False
     employee.save()
-    return HttpResponse('<h1> Se desactivo con exito </h1>')
+    
+    return redirect("employee-list")
 
-def coordinator_activate(request, coordinator_id):
+
+def employee_delete(request, employee_id):
+    employee = Employee.objects.get(id=employee_id)
+    employee.delete()
+
+    return redirect("employee-list")
+
+
+# COORDINATOR SECTION
+def coordinators_view(request):
+    coordinators = Coordinator.objects.all()
+    
+    return render(request, 'coordinators.html', {
+        'coordinators': coordinators
+    }) 
+
+
+def coordinator_register(request):
+    if request.method == 'POST':
+        form = CoordinatorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            
+            return redirect('coordinators-list')  # Redirect to a success page after registration
+    form = CoordinatorForm()
+    
+    return render(request, 'coordinator_register.html', {
+        'form': form,
+        "submit": "Registrar Coordinador"
+    })
+
+  
+def coordinator_update(request, coordinator_id):
+    coordinator = Coordinator.objects.get(id=coordinator_id)
+    if request.method == 'POST':
+        form = CoordinatorForm(request.POST, instance=coordinator)
+        if form.is_valid():
+            form.save()
+            
+            return redirect("coordinators-list")
+          
+    form = CoordinatorForm(instance=coordinator)
+    
+    return render(request, 'coordinator_update.html', {
+        'form': form,
+        'submit': 'Actualizar'
+    })
+  
+ def coordinator_activate(request, coordinator_id):
     coordinator = Coordinator.objects.get(id=coordinator_id)
     coordinator.is_active = True
     coordinator.save()
-    message = "El coordinador ha sido activado correctamente."
-    return render(request, 'coordinator_activate.html', {'message': message})
+    return redirect("coordinators-list")
 
 
 def coordinator_deactivate(request, coordinator_id):
     coordinator = Coordinator.objects.get(id=coordinator_id)
     coordinator.is_active = False
     coordinator.save()
-    return HttpResponse('<h1> Se desactivo con exito </h1>')
+    return redirect("coordinators-list")
+

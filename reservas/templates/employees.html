@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block 'content' %}
     <div class="p-5">
+        <a class="btn btn-primary" href="{% url 'employee-create' %}">Agregar Nuevo Empleado</a>
+        <br/>
+        <br/>
         {% if employees %}
             <h4 class="p-3">Empleados registrados </h4>
             {% include 'employees_table.html' %}
@@ -8,5 +11,4 @@
             <h2>No hay empleados registrados</h2>
     {% endif %}
     </div>
-
 {% endblock %}
