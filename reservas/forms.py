@@ -4,7 +4,7 @@ from .models import Employee, Coordinator
 
 
 class EmployeeForm(ModelForm):
-       class Meta:
+    class Meta:
         model = Employee
         fields = ['name', 'lastname', 'file_number' ]
         labels = {
@@ -22,7 +22,8 @@ class EmployeeForm(ModelForm):
             }),
             'file_number': forms.TextInput(attrs={
                 'class': 'form-control',
-                "type" : "number"
+                "type" : "number",
+                'min': '1',
             }),
 
         }
@@ -51,8 +52,7 @@ class CoordinatorForm(ModelForm):
             'dni_number': forms.TextInput(attrs={
                 'class': 'form-control',
                 'type': 'number',
-                'min': '1000000',
-                'max': '46000000'
+                'min': '1',
             }),
         }
         
