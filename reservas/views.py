@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import EmployeeForm, CoordinatorForm
-from .models import Employee, Coordinator
-
+from .forms import EmployeeForm, CoordinatorForm, ClientForm
+from .models import Employee, Coordinator, Client
 
 # Create your views here.
 def index(request):
@@ -130,4 +129,20 @@ def coordinator_delete(request, coordinator_id):
     coordinator.delete()
 
     return redirect("coordinators-list")
+
+def client_update(request, client_id):
+    client = Client.objects.get(id=client_id)
+    form = ClientForm(instance=client)
+    if request.method == 'POST':
+        form = ClientForm(request.POST, instance=client)
+        if form.is_valid():
+            form.save()
+            
+            return HttpResponse("<p>ya se registro</p>")
+    
+    
+    return render(request, 'client_update.html', {
+        'form': form,
+        'submit': 'Actualizar'
+    })
 

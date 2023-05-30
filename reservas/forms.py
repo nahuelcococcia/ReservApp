@@ -57,7 +57,7 @@ class CoordinatorForm(ModelForm):
         }
 
 
-class Clientform(ModelForm):
+class ClientForm(ModelForm):
     class Meta:
         model = Client
         fields = ['name', 'lastname']
