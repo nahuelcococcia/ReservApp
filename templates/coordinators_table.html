@@ -6,11 +6,13 @@
             <th scope="col">DNI</th>
             <th scope="col">Creado</th>
             <th scope="col">Esta activo </th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
     {% for coordinator in coordinators %}
-        <tr>
+        <tr class="align-middle">
             <th class="py-3" >{{ coordinator.id }}</th>
             <td class="py-3" >{{ coordinator.fullname }}</td>
             <td class="py-3" >{{ coordinator.dni_number }}</td>
@@ -20,6 +22,17 @@
                     <i class="fa-solid fa-square-check"></i>
                 {% else %}
                     <i class="fa-solid fa-rectangle-xmark"></i>
+                {% endif %}
+            </td>
+            <td>
+                <a class="p-2" href="{% url 'coordinator-delete' coordinator.id %}" onclick="return confirm('¿Esta seguro de eliminar?')"><i class="fa-solid fa-trash-can fa-lg" style="color: #fd0808;"></i></a>
+                <a href="{% url 'coordinator-update' coordinator.id %}"><i class="fa-solid fa-pen-to-square fa-lg" style="color: #37ff00;"></i></a>
+            </td>
+            <td>
+                {% if employee.is_active %}
+                <a href="{% url 'coordinator-deactivate' coordinator.id %}" class="btn btn-danger" style="width:140px;">Desactivar</a>
+                {% else %}
+                <a href="{% url 'coordinator-activate' coordinator.id %}" class="btn btn-primary" style="width:140px;">Activar</a>
                 {% endif %}
             </td>
         </tr>

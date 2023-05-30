@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block 'content' %}
     <div class="p-5">
+        <a class="btn btn-primary m-2" href="{% url 'coordinator-create' %}">Agregar Nuevo Coordinador</a>
         {% if coordinators %}
             <h4 class="p-3">Coordinadores registrados </h4>
             {% include 'coordinators_table.html' %}
