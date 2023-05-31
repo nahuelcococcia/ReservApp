@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .forms import EmployeeForm, CoordinatorForm, ClientForm
 from .models import Employee, Coordinator, Client
 
+
 # Create your views here.
 def index(request):
     return HttpResponse("<h1> Hola Mundo </h1>")
@@ -130,6 +131,7 @@ def coordinator_delete(request, coordinator_id):
 
     return redirect("coordinators-list")
 
+
 def client_update(request, client_id):
     client = Client.objects.get(id=client_id)
     form = ClientForm(instance=client)
@@ -145,4 +147,18 @@ def client_update(request, client_id):
         'form': form,
         'submit': 'Actualizar'
     })
+  
+
+def client_activate(request, client_id):
+    client = Client.objects.get(id=client_id)
+    client.is_active = True
+    client.save()
+    return HttpResponse('<h1> Se activo correctamente </h1>')
+
+
+def client_deactivate(request, client_id):
+    client = Client.objects.get(id=client_id)
+    client.is_active = False
+    client.save()
+    return HttpResponse('<h1> Se desactivo correctamente </h1>')
 
