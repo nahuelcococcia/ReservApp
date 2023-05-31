@@ -21,14 +21,14 @@
                 {% endif %}
             </td>
             <td>
-                <a class="p-2" href="#" onclick="return confirm('¿Esta seguro de eliminar?')"><i class="fa-solid fa-trash-can fa-lg" style="color: #fd0808;"></i></a>
-                <a href="#"><i class="fa-solid fa-pen-to-square fa-lg" style="color: #37ff00;"></i></a>
+                <a class="p-2" href="{% url 'client-delete' client.id %}" onclick="return confirm('¿Esta seguro de eliminar?')"><i class="fa-solid fa-trash-can fa-lg" style="color: #fd0808;"></i></a>
+                <a href="{% url 'client-update' client.id %}"><i class="fa-solid fa-pen-to-square fa-lg" style="color: #37ff00;"></i></a>
             </td>
             <td>
                 {% if client.is_active %}
-                <a href="#" class="btn btn-danger" style="width:140px;">Desactivar</a>
+                <a href="{% url 'client-deactivate' client.id %}" class="btn btn-danger" style="width:140px;">Desactivar</a>
                 {% else %}
-                <a href="#" class="btn btn-primary" style="width:140px;">Activar</a>
+                <a href="{% url 'client-activate' client.id %}" class="btn btn-primary" style="width:140px;">Activar</a>
                 {% endif %}
             </td>
         </tr>

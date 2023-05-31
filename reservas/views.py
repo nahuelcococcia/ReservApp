@@ -145,7 +145,7 @@ def client_update(request, client_id):
         if form.is_valid():
             form.save()
             
-            return HttpResponse("<p>ya se registro</p>")
+            return redirect("clients-list")
     
     
     return render(request, 'client_update.html', {
@@ -158,13 +158,17 @@ def client_activate(request, client_id):
     client = Client.objects.get(id=client_id)
     client.is_active = True
     client.save()
-    return HttpResponse('<h1> Se activo correctamente </h1>')
+    return redirect("clients-list")
 
 
 def client_deactivate(request, client_id):
     client = Client.objects.get(id=client_id)
     client.is_active = False
     client.save()
-    return HttpResponse('<h1> Se desactivo correctamente </h1>')
+    return redirect("clients-list")
 
 
+def client_delete(request, client_id):
+    client = Client.objects.get(id=client_id)
+    client.delete()
+    return redirect("clients-list")
