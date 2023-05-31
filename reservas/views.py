@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import EmployeeForm, CoordinatorForm
+from .forms import EmployeeForm, CoordinatorForm, ClientForm
 from .models import Employee, Coordinator, Client
 
 
@@ -10,13 +10,13 @@ def index(request):
 
 
 def employee_register(request):
+    form = EmployeeForm()
     if request.method == 'POST':
         form = EmployeeForm(request.POST)
         if form.is_valid():
             form.save()
             
             return redirect('employee-list')
-    form = EmployeeForm()
     
     return render(request, 'employee_register.html', {
         'form': form,
@@ -78,14 +78,14 @@ def coordinators_view(request):
 
 
 def coordinator_register(request):
+    form = CoordinatorForm()
     if request.method == 'POST':
         form = CoordinatorForm(request.POST)
         if form.is_valid():
             form.save()
             
             return redirect('coordinators-list')  # Redirect to a success page after registration
-    form = CoordinatorForm()
-    
+
     return render(request, 'coordinator_register.html', {
         'form': form,
         "submit": "Registrar Coordinador"
@@ -132,6 +132,23 @@ def coordinator_delete(request, coordinator_id):
     return redirect("coordinators-list")
 
 
+def client_update(request, client_id):
+    client = Client.objects.get(id=client_id)
+    form = ClientForm(instance=client)
+    if request.method == 'POST':
+        form = ClientForm(request.POST, instance=client)
+        if form.is_valid():
+            form.save()
+            
+            return HttpResponse("<p>ya se registro</p>")
+    
+    
+    return render(request, 'client_update.html', {
+        'form': form,
+        'submit': 'Actualizar'
+    })
+  
+
 def client_activate(request, client_id):
     client = Client.objects.get(id=client_id)
     client.is_active = True
@@ -144,3 +161,4 @@ def client_deactivate(request, client_id):
     client.is_active = False
     client.save()
     return HttpResponse('<h1> Se desactivo correctamente </h1>')
+
