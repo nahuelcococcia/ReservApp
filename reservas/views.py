@@ -132,6 +132,11 @@ def coordinator_delete(request, coordinator_id):
     return redirect("coordinators-list")
 
 
+def clients_view(request):
+    clients = Client.objects.all()
+    return render(request, 'clients.html', {'clients': clients})
+
+
 def client_update(request, client_id):
     client = Client.objects.get(id=client_id)
     form = ClientForm(instance=client)
@@ -161,4 +166,5 @@ def client_deactivate(request, client_id):
     client.is_active = False
     client.save()
     return HttpResponse('<h1> Se desactivo correctamente </h1>')
+
 

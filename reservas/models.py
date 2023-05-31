@@ -14,6 +14,9 @@ class Client(models.Model):
     lastname = models.CharField(max_length=55)
     is_active = models.BooleanField(default=True)
 
+    def fullname(self):
+        return f'{self.name} {self.lastname}'
+
 
 class Employee(models.Model):
     name = models.CharField(max_length=100)
