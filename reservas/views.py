@@ -9,13 +9,13 @@ def index(request):
 
 
 def employee_register(request):
+    form = EmployeeForm()
     if request.method == 'POST':
         form = EmployeeForm(request.POST)
         if form.is_valid():
             form.save()
             
             return redirect('employee-list')
-    form = EmployeeForm()
     
     return render(request, 'employee_register.html', {
         'form': form,
@@ -77,14 +77,14 @@ def coordinators_view(request):
 
 
 def coordinator_register(request):
+    form = CoordinatorForm()
     if request.method == 'POST':
         form = CoordinatorForm(request.POST)
         if form.is_valid():
             form.save()
             
             return redirect('coordinators-list')  # Redirect to a success page after registration
-    form = CoordinatorForm()
-    
+
     return render(request, 'coordinator_register.html', {
         'form': form,
         "submit": "Registrar Coordinador"
