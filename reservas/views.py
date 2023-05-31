@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import EmployeeForm, CoordinatorForm
-from .models import Employee, Coordinator
+from .models import Employee, Coordinator, Client
 
 
 # Create your views here.
@@ -131,3 +131,16 @@ def coordinator_delete(request, coordinator_id):
 
     return redirect("coordinators-list")
 
+
+def client_activate(request, client_id):
+    client = Client.objects.get(id=client_id)
+    client.is_active = True
+    client.save()
+    return HttpResponse('<h1> Se activo correctamente </h1>')
+
+
+def client_deactivate(request, client_id):
+    client = Client.objects.get(id=client_id)
+    client.is_active = False
+    client.save()
+    return HttpResponse('<h1> Se desactivo correctamente </h1>')

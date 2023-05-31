@@ -16,5 +16,7 @@ urlpatterns = [
     path('coordinator/deactivate/<int:coordinator_id>/', views.coordinator_deactivate, name='coordinator-deactivate'),
     path('coordinator/activate/<int:coordinator_id>/', views.coordinator_activate, name='coordinator-activate'),
     path('coordinator/delete/<int:coordinator_id>/', views.coordinator_delete, name="coordinator-delete"),
+    path('client/activate/<int:client_id>/', views.client_activate, name="client-activate"),
+    path('client/deactivate/<int:client_id>/', views.client_deactivate, name="client-deactivate"),
 ]
 
