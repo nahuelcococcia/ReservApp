@@ -97,7 +97,7 @@ class ServiceForm(ModelForm):
                 'class': 'form-control',
                 'type': 'text'
             }),
-            'price': forms.IntegerField(attrs={
+            'price': forms.TextInput(attrs={
                 'class': 'form-control',
                 'type': 'number',
                 'min': 0
