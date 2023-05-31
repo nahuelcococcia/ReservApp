@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import EmployeeForm, CoordinatorForm, ClientForm
-from .models import Employee, Coordinator, Client
+from .models import Employee, Coordinator, Client, Service
 
 
 # Create your views here.
@@ -168,3 +168,17 @@ def client_deactivate(request, client_id):
     return HttpResponse('<h1> Se desactivo correctamente </h1>')
 
 
+def service_activate(request, service_id):
+    service = Service.objects.get(id=service_id)
+    service.is_active = True
+    service.save()
+
+    return redirect("service-list")
+
+
+def service_deactivate(request, service_id):
+    service = Service.objects.get(id=service_id)
+    service.is_active = False
+    service.save()
+
+    return redirect("service-list")
