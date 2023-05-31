@@ -1,10 +1,10 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Employee, Coordinator
+from .models import Employee, Coordinator, Client
 
 
 class EmployeeForm(ModelForm):
-       class Meta:
+    class Meta:
         model = Employee
         fields = ['name', 'lastname', 'file_number' ]
         labels = {
@@ -22,7 +22,8 @@ class EmployeeForm(ModelForm):
             }),
             'file_number': forms.TextInput(attrs={
                 'class': 'form-control',
-                "type" : "number"
+                "type" : "number",
+                'min': '1',
             }),
 
         }
@@ -51,8 +52,27 @@ class CoordinatorForm(ModelForm):
             'dni_number': forms.TextInput(attrs={
                 'class': 'form-control',
                 'type': 'number',
-                'min': '1000000',
-                'max': '46000000'
+                'min': '1',
             }),
         }
-        
+
+
+class ClientForm(ModelForm):
+    class Meta:
+        model = Client
+        fields = ['name', 'lastname']
+        labels = {
+            'name': 'Nombre',
+            'lastname': 'Apellido'
+        }
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'type': 'text'
+
+            }),
+            'lastname': forms.TextInput(attrs={
+                'class': 'form-control',
+                'type': 'text'
+            }),
+        }

@@ -21,7 +21,9 @@ class Client(models.Model):
 class Employee(models.Model):
     name = models.CharField(max_length=100)
     lastname = models.CharField(max_length=100)
-    file_number = models.IntegerField(default=0)
+    file_number = models.IntegerField(unique=True, error_messages={
+        'unique': "Ya existe Empleado con ese Numero de legajo."
+    })
     is_active = models.BooleanField(default=True)
 
     def fullname(self):
@@ -31,7 +33,9 @@ class Employee(models.Model):
 class Coordinator(models.Model):
     name = models.CharField(max_length=50)
     lastname = models.CharField(max_length=50)
-    dni_number = models.IntegerField()
+    dni_number = models.IntegerField(unique=True, error_messages={
+        'unique': "Ya existe Coordinador con ese DNI."
+    })
     created_at = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
 
