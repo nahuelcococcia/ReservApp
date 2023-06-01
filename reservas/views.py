@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import EmployeeForm, CoordinatorForm, ClientForm
-from .models import Employee, Coordinator, Client
+from .forms import EmployeeForm, CoordinatorForm, ClientForm, ReserveServiceForm
+from .models import Employee, Coordinator, Client, ReserveService
 
 
 # Create your views here.
@@ -9,6 +9,7 @@ def index(request):
     return HttpResponse("<h1> Hola Mundo </h1>")
 
 
+# EMPLOYEE SECTION
 def employee_register(request):
     form = EmployeeForm()
     if request.method == 'POST':
@@ -168,3 +169,45 @@ def client_deactivate(request, client_id):
     return HttpResponse('<h1> Se desactivo correctamente </h1>')
 
 
+# RESERVE SERVICE SECTION
+def reserve_register(request):
+    form = ReserveServiceForm()
+    if request.method == 'POST':
+        form = ReserveServiceForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+            return redirect('reserves-list')
+
+    return render(request, 'reserve_register.html', {
+        'form': form,
+        "submit": "Registrar Reserva"
+    })
+
+
+def reserve_update(request, reserve_id):
+    reserve = ReserveService.objects.get(id=reserve_id)
+    form = ReserveServiceForm(instance=reserve)
+    if request.method == 'POST':
+        form = ReserveServiceForm(request.POST, instance=reserve)
+        if form.is_valid():
+            form.save()
+
+            return redirect('reserves-list')
+
+    return render(request, 'reserve_register.html', {
+        'form': form,
+        'submit': 'Actualizar'
+    })
+
+
+def reserves_view(request):
+    reserves = ReserveService.objects.all()
+    return render(request, 'reserves.html', {'reserves': reserves})
+
+
+def reserve_delete(request, reserve_id):
+    reserve = ReserveService.objects.get(id=reserve_id)
+    reserve.delete()
+
+    return redirect('reserves-list')

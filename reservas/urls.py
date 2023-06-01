@@ -20,6 +20,10 @@ urlpatterns = [
     path('client/update/<int:client_id>/', views.client_update, name="client-update"),
     path('client/activate/<int:client_id>/', views.client_activate, name="client-activate"),
     path('client/deactivate/<int:client_id>/', views.client_deactivate, name="client-deactivate"),
+    path('reserves/list/', views.reserves_view, name="reserves-list"),
+    path('reserve/new/', views.reserve_register, name="reserve-create"),
+    path('reserve/update/<int:reserve_id>', views.reserve_update, name="reserve-update"),
+    path('reserve/delete/<int:reserve_id>/', views.reserve_delete, name="reserve-delete"),
 
 ]
 
