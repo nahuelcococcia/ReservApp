@@ -168,3 +168,16 @@ def client_deactivate(request, client_id):
     return HttpResponse('<h1> Se desactivo correctamente </h1>')
 
 
+def client_register(request):
+    form = ClientForm()
+    if request.method == 'POST':
+        form = ClientForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+            return redirect('clients-list')
+
+    return render(request, 'client_register.html', {
+        'form': form,
+        "submit": "Registrar Cliente"
+    })
