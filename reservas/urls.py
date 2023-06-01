@@ -21,6 +21,8 @@ urlpatterns = [
     path('client/update/<int:client_id>/', views.client_update, name="client-update"),
     path('client/activate/<int:client_id>/', views.client_activate, name="client-activate"),
     path('client/deactivate/<int:client_id>/', views.client_deactivate, name="client-deactivate"),
+    path('services/list/', views.service_view, name='services-list'),
     path('service/activate/<int:service_id>/', views.service_activate, name="service-activate"),
     path('service/deactivate/<int:service_id>/', views.service_deactivate, name="service-deactivate"),
+
 ]

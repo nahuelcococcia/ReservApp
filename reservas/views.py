@@ -183,6 +183,10 @@ def client_deactivate(request, client_id):
     client.save()
     return HttpResponse('<h1> Se desactivo correctamente </h1>')
 
+def service_view(request):
+    services = Service.objects.all() 
+    return render(request, 'services.html', {'services': services})
+
 
 
 def service_activate(request, service_id):
