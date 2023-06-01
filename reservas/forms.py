@@ -112,7 +112,7 @@ class ReserveServiceForm(ModelForm):
             'price': forms.TextInput(attrs={
                 'class': 'form-control',
                 'type': 'number',
-                'min': 0
+                'min': 1
             })
         }
 
@@ -122,3 +122,9 @@ class ReserveServiceForm(ModelForm):
         self.fields['responsible'].queryset = Coordinator.objects.filter(is_active=True)
         self.fields['employee'].queryset = Employee.objects.filter(is_active=True)
         self.fields['service'].queryset = Service.objects.filter(is_active=True)
+
+    def clean(self):
+        cleaned_data = super().clean()
+        date = cleaned_data.get('reservation_date')
+        if date <= datetime.date.today():
+            raise forms.ValidationError("La fecha debe ser mayor o igual al dia de hoy")

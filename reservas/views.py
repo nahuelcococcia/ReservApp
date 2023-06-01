@@ -179,7 +179,7 @@ def reserve_register(request):
 
             return redirect('reserves-list')
 
-    return render(request, 'reserve_register.html', {
+    return render(request, 'reserve_register_update.html', {
         'form': form,
         "submit": "Registrar Reserva"
     })
@@ -195,7 +195,7 @@ def reserve_update(request, reserve_id):
 
             return redirect('reserves-list')
 
-    return render(request, 'reserve_register.html', {
+    return render(request, 'reserve_register_update.html', {
         'form': form,
         'submit': 'Actualizar'
     })
