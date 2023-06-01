@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Employee, Coordinator, Client
+from .models import Employee, Coordinator, Client, Service
 
 
 class EmployeeForm(ModelForm):
@@ -74,5 +74,32 @@ class ClientForm(ModelForm):
             'lastname': forms.TextInput(attrs={
                 'class': 'form-control',
                 'type': 'text'
+            }),
+        }
+
+
+class ServiceForm(ModelForm):
+    class Meta:
+        model = Service
+        fields = ['name', 'description', 'price']
+        labels = {
+            'name': 'Nombre',
+            'Description': 'Descripcion',
+            'price': 'Precio'
+        }
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'type': 'text'
+
+            }),
+            'description': forms.Textarea(attrs={
+                'class': 'form-control',
+                'type': 'text'
+            }),
+            'price': forms.TextInput(attrs={
+                'class': 'form-control',
+                'type': 'number',
+                'min': 0
             }),
         }

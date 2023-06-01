@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import EmployeeForm, CoordinatorForm, ClientForm
+from .forms import EmployeeForm, CoordinatorForm, ClientForm, ServiceForm
 from .models import Employee, Coordinator, Client, Service
 
 
@@ -204,3 +204,16 @@ def service_deactivate(request, service_id):
 
     return redirect("service-list")
 
+def service_register(request):
+    form = ServiceForm()
+    if request.method == 'POST':
+        form = ServiceForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+            return HttpResponse('<h1> Se registro con éxito</h1>')
+
+    return render(request, 'service_register.html', {
+        'form': form,
+        "submit": "Registrar Servicio"
+    })
