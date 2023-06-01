@@ -2,7 +2,7 @@ import datetime
 
 from django import forms
 from django.forms import ModelForm
-from .models import Employee, Coordinator, Client, ReserveService, Service
+from .models import Employee, Coordinator, Client, Service, ReserveService
 
 
 class EmployeeForm(ModelForm):
@@ -80,6 +80,34 @@ class ClientForm(ModelForm):
         }
 
 
+       
+class ServiceForm(ModelForm):
+    class Meta:
+        model = Service
+        fields = ['name', 'description', 'price']
+        labels = {
+            'name': 'Nombre',
+            'Description': 'Descripcion',
+            'price': 'Precio'
+        }
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'type': 'text'
+
+            }),
+            'description': forms.Textarea(attrs={
+                'class': 'form-control',
+                'type': 'text'
+            }),
+            'price': forms.TextInput(attrs={
+                'class': 'form-control',
+                'type': 'number',
+                'min': 1
+            })
+        }
+        
+        
 class ReserveServiceForm(ModelForm):
     class Meta:
         model = ReserveService
