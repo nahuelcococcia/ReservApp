@@ -29,7 +29,7 @@
                 <a href="{% url 'coordinator-update' coordinator.id %}"><i class="fa-solid fa-pen-to-square fa-lg" style="color: #37ff00;"></i></a>
             </td>
             <td>
-                {% if employee.is_active %}
+                {% if coordinator.is_active %}
                 <a href="{% url 'coordinator-deactivate' coordinator.id %}" class="btn btn-danger" style="width:140px;">Desactivar</a>
                 {% else %}
                 <a href="{% url 'coordinator-activate' coordinator.id %}" class="btn btn-primary" style="width:140px;">Activar</a>
