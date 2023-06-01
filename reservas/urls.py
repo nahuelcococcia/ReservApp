@@ -17,10 +17,16 @@ urlpatterns = [
     path('coordinator/activate/<int:coordinator_id>/', views.coordinator_activate, name='coordinator-activate'),
     path('coordinator/delete/<int:coordinator_id>/', views.coordinator_delete, name="coordinator-delete"),
     path('clients/list/', views.clients_view, name="clients-list"),
+    path('client/new/', views.client_register, name="client-create"),
     path('client/update/<int:client_id>/', views.client_update, name="client-update"),
     path('client/activate/<int:client_id>/', views.client_activate, name="client-activate"),
     path('client/deactivate/<int:client_id>/', views.client_deactivate, name="client-deactivate"),
     path('client/delete/<int:client_id>/', views.client_delete, name="client-delete"),
+    path('services/list/', views.service_view, name='services-list'),
+    path('service/new/', views.service_register, name="service-create"),
+    path('service/update/<int:service_id>/', views.service_update, name="service-update"),
+    path('service/activate/<int:service_id>/', views.service_activate, name="service-activate"),
+    path('service/deactivate/<int:service_id>/', views.service_deactivate, name="service-deactivate"),
 
 ]
 

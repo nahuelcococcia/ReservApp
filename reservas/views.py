@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import EmployeeForm, CoordinatorForm, ClientForm
-from .models import Employee, Coordinator, Client
+from .forms import EmployeeForm, CoordinatorForm, ClientForm, ServiceForm
+from .models import Employee, Coordinator, Client, Service
 
 
 # Create your views here.
@@ -137,6 +137,22 @@ def clients_view(request):
     return render(request, 'clients.html', {'clients': clients})
 
 
+def client_register(request):
+    form = ClientForm()
+    if request.method == 'POST':
+        form = ClientForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+            return redirect('clients-list')
+
+    return render(request, 'client_register.html', {
+        'form': form,
+        "submit": "Registrar Cliente"
+    })
+
+
+
 def client_update(request, client_id):
     client = Client.objects.get(id=client_id)
     form = ClientForm(instance=client)
@@ -172,3 +188,56 @@ def client_delete(request, client_id):
     client = Client.objects.get(id=client_id)
     client.delete()
     return redirect("clients-list")
+
+
+def service_view(request):
+    services = Service.objects.all()
+    return render(request, 'services.html', {'services': services})
+
+
+def service_register(request):
+    form = ServiceForm()
+    if request.method == 'POST':
+        form = ServiceForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+            return HttpResponse('<h1> Se registro con éxito</h1>')
+
+    return render(request, 'service_register.html', {
+        'form': form,
+        "submit": "Registrar Servicio"
+    })
+
+
+def service_update(request, service_id):
+    service = Service.objects.get(id=service_id)
+    if request.method == 'POST':
+        form = ServiceForm(request.POST, instance=service)
+        if form.is_valid():
+            form.save()
+
+            return redirect("services-list")
+    form = ServiceForm(instance=service)
+
+    return render(request, 'service_update.html', {
+        'form': form,
+        'submit': 'Actualizar'
+    })
+
+
+def service_activate(request, service_id):
+    service = Service.objects.get(id=service_id)
+    service.is_active = True
+    service.save()
+
+    return redirect("service-list")
+
+
+def service_deactivate(request, service_id):
+    service = Service.objects.get(id=service_id)
+    service.is_active = False
+    service.save()
+
+    return redirect("service-list")
+
