@@ -1,0 +1,40 @@
+<table class="table .table-sm text-center" >
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre </th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Esta activo </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for service in services %}
+        <tr class="align-middle">
+            <th class="py-3" >{{ service.id }}</th>
+            <td class="py-3" >{{ service.name }}</td>
+            <td class="py-3" >{{ service.description }}</td>
+            <td class="py-3" >{{ service.price }}</td>
+            <td class="py-3" >
+                {% if service.is_active %}
+                    <i class="fa-solid fa-square-check"></i>
+                {% else %}
+                    <i class="fa-solid fa-rectangle-xmark"></i>
+                {% endif %}
+            </td>
+            <td>
+                <a class="p-2" href="#" onclick="return confirm('¿Esta seguro de eliminar?')"><i class="fa-solid fa-trash-can fa-lg" style="color: #fd0808;"></i></a>
+                <a href="#"><i class="fa-solid fa-pen-to-square fa-lg" style="color: #37ff00;"></i></a>
+            </td>
+            <td>
+                {% if service.is_active %}
+                <a href="#" class="btn btn-danger" style="width:140px;">Desactivar</a>
+                {% else %}
+                <a href="#" class="btn btn-primary" style="width:140px;">Activar</a>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
