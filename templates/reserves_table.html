@@ -1,0 +1,34 @@
+<table class="table .table-sm text-center">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Fecha Creacion</th>
+        <th scope="col">Fecha Reserva</th>
+        <th scope="col">Cliente</th>
+        <th scope="col">Responsable</th>
+        <th scope="col">Empleado</th>
+        <th scope="col">Servicio</th>
+        <th scope="col">Precio</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for reserve in reserves %}
+    <tr class="align-middle">
+        <th class="py-3">{{ reserve.id }}</th>
+        <td class="py-3">{{ reserve.creation_date }}</td>
+        <td class="py-3">{{ reserve.reservation_date }}</td>
+        <td class="py-3">{{ reserve.client }}</td>
+        <td class="py-3">{{ reserve.responsible }}</td>
+        <td class="py-3">{{ reserve.employee }}</td>
+        <td class="py-3">{{ reserve.service }}</td>
+        <td class="py-3">{{ reserve.price }}</td>
+        <td>
+            <a class="p-2" href="{% url 'reserve-delete' reserve.id %}" onclick="return confirm('¿Esta seguro de eliminar?')"><i class="fa-solid fa-trash-can fa-lg" style="color: #fd0808;"></i></a>
+            <a href="{% url 'reserve-update' reserve.id %}"><i class="fa-solid fa-pen-to-square fa-lg" style="color: #37ff00;"></i></a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>

@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import EmployeeForm, CoordinatorForm, ClientForm, ServiceForm
-from .models import Employee, Coordinator, Client, Service
+from .forms import EmployeeForm, CoordinatorForm, ClientForm, ServiceForm, ReserveServiceForm
+from .models import Employee, Coordinator, Client, Service, ReserveService
+
 
 
 # Create your views here.
@@ -9,6 +10,7 @@ def index(request):
     return HttpResponse("<h1> Hola Mundo </h1>")
 
 
+# EMPLOYEE SECTION
 def employee_register(request):
     form = EmployeeForm()
     if request.method == 'POST':
@@ -239,7 +241,7 @@ def service_deactivate(request, service_id):
     service = Service.objects.get(id=service_id)
     service.is_active = False
     service.save()
-
+    
     return redirect("services-list")
 
 
@@ -248,3 +250,48 @@ def service_delete(request, service_id):
     service.delete()
 
     return redirect("services-list")
+  
+  
+# RESERVE SERVICE SECTION
+def reserve_register(request):
+    form = ReserveServiceForm()
+    if request.method == 'POST':
+        form = ReserveServiceForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+            return redirect('reserves-list')
+
+    return render(request, 'reserve_register_update.html', {
+        'form': form,
+        "submit": "Registrar Reserva"
+    })
+
+
+def reserve_update(request, reserve_id):
+    reserve = ReserveService.objects.get(id=reserve_id)
+    form = ReserveServiceForm(instance=reserve)
+    if request.method == 'POST':
+        form = ReserveServiceForm(request.POST, instance=reserve)
+        if form.is_valid():
+            form.save()
+
+            return redirect('reserves-list')
+
+    return render(request, 'reserve_register_update.html', {
+        'form': form,
+        'submit': 'Actualizar'
+    })
+
+
+def reserves_view(request):
+    reserves = ReserveService.objects.all()
+    return render(request, 'reserves.html', {'reserves': reserves})
+
+
+def reserve_delete(request, reserve_id):
+    reserve = ReserveService.objects.get(id=reserve_id)
+    reserve.delete()
+
+    return redirect('reserves-list')
+

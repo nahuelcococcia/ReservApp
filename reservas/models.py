@@ -8,6 +8,9 @@ class Service(models.Model):
     price = models.IntegerField()
     is_active = models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Client(models.Model):
     name = models.CharField(max_length=55)
@@ -16,6 +19,9 @@ class Client(models.Model):
 
     def fullname(self):
         return f'{self.name} {self.lastname}'
+
+    def __str__(self):
+        return self.fullname()
 
 
 class Employee(models.Model):
@@ -28,6 +34,9 @@ class Employee(models.Model):
 
     def fullname(self):
         return f'{self.name} {self.lastname}'
+
+    def __str__(self):
+        return self.fullname()
 
 
 class Coordinator(models.Model):
@@ -42,12 +51,18 @@ class Coordinator(models.Model):
     def fullname(self):
         return f'{self.name} {self.lastname}'
 
+    def __str__(self):
+        return self.fullname()
+
 
 class ReserveService(models.Model):
     creation_date = models.DateField(auto_now_add=True)
     reservation_date = models.DateField()
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
-    # responsible = models.ForeignKey(Coordinador, on_delete=models.CASCADE)
+    responsible = models.ForeignKey(Coordinator, on_delete=models.CASCADE)
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
     price = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f'Cliente: {self.client}, Servicio: {self.service}, Precio: {self.price}'
