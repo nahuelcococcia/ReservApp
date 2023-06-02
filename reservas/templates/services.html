@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block 'content' %}
     <div class="p-5">
-        <a class="btn btn-primary m-2" href="#">Agregar Nuevo Servicio</a>
+        <a class="btn btn-primary m-2" href="{% url 'service-create' %}">Agregar Nuevo Servicio</a>
         {% if services %}
             <h4 class="p-3">Servicios </h4>
             {% include 'services_table.html' %}

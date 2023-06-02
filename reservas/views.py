@@ -154,7 +154,6 @@ def client_register(request):
     })
 
 
-
 def client_update(request, client_id):
     client = Client.objects.get(id=client_id)
     form = ClientForm(instance=client)
@@ -163,7 +162,7 @@ def client_update(request, client_id):
         if form.is_valid():
             form.save()
             
-            return HttpResponse("<p>ya se registro</p>")
+            return redirect("clients-list")
     
     
     return render(request, 'client_update.html', {
@@ -176,19 +175,25 @@ def client_activate(request, client_id):
     client = Client.objects.get(id=client_id)
     client.is_active = True
     client.save()
-    return HttpResponse('<h1> Se activo correctamente </h1>')
+    return redirect("clients-list")
 
 
 def client_deactivate(request, client_id):
     client = Client.objects.get(id=client_id)
     client.is_active = False
     client.save()
-    return HttpResponse('<h1> Se desactivo correctamente </h1>')
+    return redirect("clients-list")
 
 
-#SERVICE SECTION
+def client_delete(request, client_id):
+    client = Client.objects.get(id=client_id)
+    client.delete()
+    return redirect("clients-list")
+
+
+# SERVICE SECTION
 def service_view(request):
-    services = Service.objects.all() 
+    services = Service.objects.all()
     return render(request, 'services.html', {'services': services})
 
 
@@ -199,7 +204,7 @@ def service_register(request):
         if form.is_valid():
             form.save()
 
-            return HttpResponse('<h1> Se registro con éxito</h1>')
+            return redirect('services-list')
 
     return render(request, 'service_register.html', {
         'form': form,
@@ -215,28 +220,36 @@ def service_update(request, service_id):
             form.save()
 
             return redirect("services-list")
+
     form = ServiceForm(instance=service)
 
     return render(request, 'service_update.html', {
         'form': form,
         'submit': 'Actualizar'
     })
-  
+
 
 def service_activate(request, service_id):
     service = Service.objects.get(id=service_id)
     service.is_active = True
     service.save()
 
-    return redirect("service-list")
+    return redirect("services-list")
 
 
 def service_deactivate(request, service_id):
     service = Service.objects.get(id=service_id)
     service.is_active = False
     service.save()
+    
+    return redirect("services-list")
 
-    return redirect("service-list")
+
+def service_delete(request, service_id):
+    service = Service.objects.get(id=service_id)
+    service.delete()
+
+    return redirect("services-list")
   
   
 # RESERVE SERVICE SECTION
@@ -281,3 +294,4 @@ def reserve_delete(request, reserve_id):
     reserve.delete()
 
     return redirect('reserves-list')
+
