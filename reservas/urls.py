@@ -3,7 +3,7 @@ from django.urls import path
 from reservas import views
 
 urlpatterns = [
-    path('home/', views.index, name="home"),
+    path('', views.index, name="home"),
     path('employee/new/', views.employee_register, name="employee-create"),
     path('employee/activate/<int:id>/', views.employee_activate, name="employee-activate"), 
     path('employee/update/<int:employee_id>/', views.employee_update, name="employee-update"),

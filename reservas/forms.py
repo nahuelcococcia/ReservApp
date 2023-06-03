@@ -80,7 +80,6 @@ class ClientForm(ModelForm):
         }
 
 
-       
 class ServiceForm(ModelForm):
     class Meta:
         model = Service
@@ -143,13 +142,6 @@ class ReserveServiceForm(ModelForm):
                 'min': 1
             })
         }
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['client'].queryset = Client.objects.filter(is_active=True)
-        self.fields['responsible'].queryset = Coordinator.objects.filter(is_active=True)
-        self.fields['employee'].queryset = Employee.objects.filter(is_active=True)
-        self.fields['service'].queryset = Service.objects.filter(is_active=True)
 
     def clean(self):
         cleaned_data = super().clean()
