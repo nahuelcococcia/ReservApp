@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block 'content' %}
     <div class="p-5">
-        <a class="btn btn-primary m-2" href="{% url 'client-create' %}">Nuevo Cliente</a>
+        <a class="btn btn-primary m-2" href="{% url 'client-create' %}">Agregar Nuevo</a>
         {% if clients %}
             <h4 class="p-3">Clientes</h4>
             {% include 'clients_table.html' %}
