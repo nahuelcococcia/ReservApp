@@ -288,6 +288,11 @@ def reserve_register(request):
 
             return redirect('reserves-list')
 
+    form.fields['client'].queryset = Client.objects.filter(is_active=True)
+    form.fields['responsible'].queryset = Coordinator.objects.filter(is_active=True)
+    form.fields['employee'].queryset = Employee.objects.filter(is_active=True)
+    form.fields['service'].queryset = Service.objects.filter(is_active=True)
+
     return render(request, 'create_update.html', {
         'form': form,
         "submit": "Registrar Reserva",
@@ -304,6 +309,11 @@ def reserve_update(request, reserve_id):
             form.save()
 
             return redirect('reserves-list')
+
+    form.fields['client'].queryset = Client.objects.filter(is_active=True)
+    form.fields['responsible'].queryset = Coordinator.objects.filter(is_active=True)
+    form.fields['employee'].queryset = Employee.objects.filter(is_active=True)
+    form.fields['service'].queryset = Service.objects.filter(is_active=True)
 
     return render(request, 'create_update.html', {
         'form': form,
