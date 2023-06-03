@@ -1,109 +1,65 @@
 from django.http import JsonResponse
-from django.shortcuts import render
+from rest_framework.decorators import api_view, renderer_classes
+from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
+from rest_framework.response import Response
+from rest_framework import status
 
+from api.serializers import ServiceSerializer, ClientSerializer, EmployeeSerializer, CoordinatorSerializer
 from reservas.models import Service, Client, Employee, Coordinator
 
 
 # Create your views here.
 
 # API SERVICE
+@api_view(['GET'])
 def api_service(request):
-    services = Service.objects.all()
-    data = services.values()
-    list_data = _map_services(data)
+    try:
+        services = Service.objects.all()
 
-    return JsonResponse(list_data, safe=False)
+        serializer = ServiceSerializer(services, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except:
+        return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-
+@api_view(['GET'])
 def api_service_id(request, service_id):
-    service = Service.objects.get(id=service_id)
-    api = _map_service(service)
-
-    return JsonResponse(api, safe=False)
-
-
-def _map_service(service):
-    return {
-        'id': service.id,
-        'name': service.name,
-        'price': service.price
-    }
-
-
-def _map_services(services):
-    api_list = []
-    for service in services:
-        api_list.append({
-            'id': service['id'],
-            'name': service['price'],
-            'price': service['price']
-        })
-    return api_list
+    try:
+        service = Service.objects.get(id=service_id)
+        serializer = ServiceSerializer(service)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except:
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 # API CLIENT
 
 def api_client(request):
     clients = Client.objects.all()
-    data = clients.values()
-    list_data = _map_clients(data)
+    try:
+        serializer = ClientSerializer(clients, many=True)
 
-    return JsonResponse(list_data, safe=False)
-
-
-def _map_clients(clients):
-    api_list = []
-    for client in clients:
-        api_list.append({
-            'id': client['id'],
-            'name': client['name'],
-            'lastname': client['lastname'],
-            'is_active': client['is_active']
-        })
-    return api_list
-
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except:
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
 # API EMPLOYEE
 def api_employee(request):
-    employees = Employee.objects.all()
-    data = employees.values()
-    list_data = _map_employees(data)
+    try:
+        employees = Employee.objects.all()
+        serializer = EmployeeSerializer(employees, many=True)
 
-    return JsonResponse(list_data, safe=False)
-
-
-def _map_employees(employees):
-    api_list = []
-    for employee in employees:
-        api_list.append({
-            'id': employee['id'],
-            'name': employee['name'],
-            'lastname': employee['lastname'],
-            'file_number': employee['file_number'],
-            'is_active': employee['is_active']
-        })
-    return api_list
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except:
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 # API COORDINATOR
 
 def api_coordinator(request):
-    coordinators = Coordinator.objects.all()
-    data = coordinators.values()
-    list_data = _map_coordinators(data)
+    try:
+        coordinators = Coordinator.objects.all()
+        serializer = CoordinatorSerializer(coordinators, many=True)
 
-    return JsonResponse(list_data, safe=False)
-
-
-def _map_coordinators(coordinators):
-    api_list = []
-    for coordinator in coordinators:
-        api_list.append({
-            'id': coordinator['id'],
-            'name': coordinator['name'],
-            'lastname': coordinator['lastname'],
-            'dni_number': coordinator['dni_number'],
-            'created_at': coordinator['created_at'],
-            'is_active': coordinator['is_active']
-        })
-    return api_list
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except:
+        return Response(status=status.HTTP_404_NOT_FOUND)
