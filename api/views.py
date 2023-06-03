@@ -11,41 +11,55 @@ from reservas.models import Service, Client, Employee, Coordinator
 # Create your views here.
 
 # API SERVICE
+@api_view(['GET'])
 def api_service(request):
-    services = Service.objects.all()
-    serializer = ServiceSerializer(services, many=True)
+    try:
+        services = Service.objects.all()
 
-    return JsonResponse(serializer.data, safe=False)
+        serializer = ServiceSerializer(services, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except:
+        return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-
+@api_view(['GET'])
 def api_service_id(request, service_id):
-    service = Service.objects.get(id=service_id)
-    serializer = ServiceSerializer(service)
-
-    return JsonResponse(serializer.data, safe=False)
+    try:
+        service = Service.objects.get(id=service_id)
+        serializer = ServiceSerializer(service)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except:
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 # API CLIENT
 
 def api_client(request):
     clients = Client.objects.all()
-    serializer = ClientSerializer(clients, many=True)
+    try:
+        serializer = ClientSerializer(clients, many=True)
 
-    return JsonResponse(serializer.data, safe=False)
-
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except:
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
 # API EMPLOYEE
 def api_employee(request):
-    employees = Employee.objects.all()
-    serializer = EmployeeSerializer(employees, many=True)
+    try:
+        employees = Employee.objects.all()
+        serializer = EmployeeSerializer(employees, many=True)
 
-    return JsonResponse(serializer.data, safe=False)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except:
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 # API COORDINATOR
 
 def api_coordinator(request):
-    coordinators = Coordinator.objects.all()
-    serializer = CoordinatorSerializer(coordinators, many=True)
+    try:
+        coordinators = Coordinator.objects.all()
+        serializer = CoordinatorSerializer(coordinators, many=True)
 
-    return JsonResponse(serializer.data, safe=False)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except:
+        return Response(status=status.HTTP_404_NOT_FOUND)
