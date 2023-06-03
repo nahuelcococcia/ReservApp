@@ -1,3 +1,31 @@
 {% extends 'base.html' %}
 {% block 'content' %}
+<div class="p-3 m-3">
+    <h1>ReservApp</h1>
+    <p>
+        ReservApp es una aplicacion desarrollada en el año 2023, utilizando Django. Sirve fundamentalmente para registrar reservas de servicios.
+        </br>
+        </br>
+        Para empezar a utilizarla debes tener en cuenta los siguientes puntos:
+        <ul>
+            <li>
+                Una reserva de servicio necesita de al menos 1 cliente, 1 empleado, 1 servicio y 1 coordinador.
+            </li>
+
+            <li>
+                Estos elementos necesarios, deben ser elementos que esten activos al momento de crear la reserva.
+            </li>
+
+            <li>
+                Si una reserva fue creada y luego alguno de los elementos necesarios es desactivado, la reserva tambien se desactivará.
+            </li>
+
+            <li>
+                Si la reserva fue creada y luego alguno de los elementos necesarios es eliminado, la reserva tambien se eliminará.
+            </li>
+        </ul>
+    </p>
+</div>
+
+
 {% endblock %}
