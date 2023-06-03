@@ -1,11 +1,9 @@
 {% extends 'base.html' %}
 {% block 'content' %}
     <div class="p-5">
-        <a class="btn btn-primary" href="{% url 'reserve-create' %}">Agregar Nueva Reserva</a>
-        <br/>
-        <br/>
+        <a class="btn btn-primary m-2" href="{% url 'reserve-create' %}">Nueva Reserva</a>
         {% if reserves %}
-            <h4 class="p-3">Reservas registradas </h4>
+            <h4 class="p-3">Reservas</h4>
             {% include 'reserves_table.html' %}
         {% else %}
             <h2>No hay Reservas registradas</h2>

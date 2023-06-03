@@ -1,11 +1,9 @@
 {% extends 'base.html' %}
 {% block 'content' %}
     <div class="p-5">
-        <a class="btn btn-primary" href="{% url 'employee-create' %}">Agregar Nuevo Empleado</a>
-        <br/>
-        <br/>
+        <a class="btn btn-primary m-2" href="{% url 'employee-create' %}">Nuevo Empleado</a>
         {% if employees %}
-            <h4 class="p-3">Empleados registrados </h4>
+            <h4 class="p-3">Empleados</h4>
             {% include 'employees_table.html' %}
         {% else %}
             <h2>No hay empleados registrados</h2>

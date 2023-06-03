@@ -1,16 +1,22 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from .forms import EmployeeForm, CoordinatorForm, ClientForm, ServiceForm, ReserveServiceForm
 from .models import Employee, Coordinator, Client, Service, ReserveService
 
 
-
 # Create your views here.
 def index(request):
-    return HttpResponse("<h1> Hola Mundo </h1>")
+    return render(request, 'index.html')
 
 
 # EMPLOYEE SECTION
+def employees_view(request):
+    employees = Employee.objects.all()
+
+    return render(request, 'employees.html', {
+        'employees': employees
+    })
+
+
 def employee_register(request):
     form = EmployeeForm()
     if request.method == 'POST':
@@ -20,23 +26,11 @@ def employee_register(request):
             
             return redirect('employee-list')
     
-    return render(request, 'employee_register.html', {
+    return render(request, 'create_update.html', {
         'form': form,
-        "submit": "Registrar Empleado"
+        'submit': 'Registrar Empleado',
+        'prev_url': 'employee-list'
     })
-
-  
-def employees_view(request):
-    employees = Employee.objects.all()
-    return render(request, 'employees.html', {'employees': employees})
-
-
-def employee_activate(request, id):
-    employee = Employee.objects.get(id=id)
-    employee.is_active = True
-    employee.save()
-    
-    return redirect("employee-list")
 
 
 def employee_update(request, employee_id):
@@ -46,13 +40,23 @@ def employee_update(request, employee_id):
         if form.is_valid():
             form.save()
             
-            return redirect("employee-list")
+            return redirect('employee-list')
+
     form = EmployeeForm(instance=employee)
     
-    return render(request, 'employee_update.html', {
+    return render(request, 'create_update.html', {
         'form': form,
-        'submit': 'Actualizar'
+        'submit': 'Actualizar',
+        'prev_url': 'employee-list'
     })
+
+
+def employee_activate(request, id):
+    employee = Employee.objects.get(id=id)
+    employee.is_active = True
+    employee.save()
+
+    return redirect("employee-list")
 
 
 def employee_deactivate(request, employee_id):
@@ -88,9 +92,10 @@ def coordinator_register(request):
             
             return redirect('coordinators-list')  # Redirect to a success page after registration
 
-    return render(request, 'coordinator_register.html', {
+    return render(request, 'create_update.html', {
         'form': form,
-        "submit": "Registrar Coordinador"
+        "submit": "Registrar Coordinador",
+        'prev_url': 'coordinators-list'
     })
 
   
@@ -105,9 +110,10 @@ def coordinator_update(request, coordinator_id):
           
     form = CoordinatorForm(instance=coordinator)
     
-    return render(request, 'coordinator_update.html', {
+    return render(request, 'create_update.html', {
         'form': form,
-        'submit': 'Actualizar'
+        'submit': 'Actualizar',
+        'prev_url': 'coordinators-list'
     })
 
   
@@ -136,7 +142,10 @@ def coordinator_delete(request, coordinator_id):
 
 def clients_view(request):
     clients = Client.objects.all()
-    return render(request, 'clients.html', {'clients': clients})
+
+    return render(request, 'clients.html', {
+        'clients': clients
+    })
 
 
 def client_register(request):
@@ -148,9 +157,10 @@ def client_register(request):
 
             return redirect('clients-list')
 
-    return render(request, 'client_register.html', {
+    return render(request, 'create_update.html', {
         'form': form,
-        "submit": "Registrar Cliente"
+        'submit': 'Registrar Cliente',
+        'prev_url': 'clients-list'
     })
 
 
@@ -163,11 +173,11 @@ def client_update(request, client_id):
             form.save()
             
             return redirect("clients-list")
-    
-    
-    return render(request, 'client_update.html', {
+
+    return render(request, 'create_update.html', {
         'form': form,
-        'submit': 'Actualizar'
+        'submit': 'Actualizar',
+        'prev_url': 'clients-list'
     })
   
 
@@ -175,6 +185,7 @@ def client_activate(request, client_id):
     client = Client.objects.get(id=client_id)
     client.is_active = True
     client.save()
+
     return redirect("clients-list")
 
 
@@ -182,19 +193,24 @@ def client_deactivate(request, client_id):
     client = Client.objects.get(id=client_id)
     client.is_active = False
     client.save()
+
     return redirect("clients-list")
 
 
 def client_delete(request, client_id):
     client = Client.objects.get(id=client_id)
     client.delete()
+
     return redirect("clients-list")
 
 
 # SERVICE SECTION
 def service_view(request):
     services = Service.objects.all()
-    return render(request, 'services.html', {'services': services})
+
+    return render(request, 'services.html', {
+        'services': services
+    })
 
 
 def service_register(request):
@@ -206,9 +222,10 @@ def service_register(request):
 
             return redirect('services-list')
 
-    return render(request, 'service_register.html', {
+    return render(request, 'create_update.html', {
         'form': form,
-        "submit": "Registrar Servicio"
+        'submit': 'Registrar Servicio',
+        'prev_url': 'services-list'
     })
 
 
@@ -219,13 +236,14 @@ def service_update(request, service_id):
         if form.is_valid():
             form.save()
 
-            return redirect("services-list")
+            return redirect('services-list')
 
     form = ServiceForm(instance=service)
 
-    return render(request, 'service_update.html', {
+    return render(request, 'create_update.html', {
         'form': form,
-        'submit': 'Actualizar'
+        'submit': 'Actualizar',
+        'prev_url': 'services-list'
     })
 
 
@@ -253,6 +271,14 @@ def service_delete(request, service_id):
   
   
 # RESERVE SERVICE SECTION
+def reserves_view(request):
+    reserves = ReserveService.objects.filter(client__is_active=True).filter(responsible__is_active=True).filter(employee__is_active=True).filter(service__is_active=True)
+
+    return render(request, 'reserves.html', {
+        'reserves': reserves
+    })
+
+
 def reserve_register(request):
     form = ReserveServiceForm()
     if request.method == 'POST':
@@ -262,9 +288,10 @@ def reserve_register(request):
 
             return redirect('reserves-list')
 
-    return render(request, 'reserve_register_update.html', {
+    return render(request, 'create_update.html', {
         'form': form,
-        "submit": "Registrar Reserva"
+        "submit": "Registrar Reserva",
+        'prev_url': 'reserves-list'
     })
 
 
@@ -278,15 +305,11 @@ def reserve_update(request, reserve_id):
 
             return redirect('reserves-list')
 
-    return render(request, 'reserve_register_update.html', {
+    return render(request, 'create_update.html', {
         'form': form,
-        'submit': 'Actualizar'
+        'submit': 'Actualizar',
+        'prev_url': 'reserves-list'
     })
-
-
-def reserves_view(request):
-    reserves = ReserveService.objects.all()
-    return render(request, 'reserves.html', {'reserves': reserves})
 
 
 def reserve_delete(request, reserve_id):
