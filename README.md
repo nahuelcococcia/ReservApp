@@ -52,3 +52,30 @@ por medio de las siguientes urls
 
 <img src=".\static\clientes2.png">
 
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+# Modulo Empleados 
+
+Este proyecto contiene un módulo de Empleados que proporciona funcionalidades específicas relacionadas con la gestión de clientes. En este modulo podemos crear, editar, borar, activar y desactivar empleados
+por medio de las siguientes urls 
+
+
+| url                   | Accion                           |
+|-----------------------|----------------------------------|
+| employee/new/         | Crear un nuevo empleado          |
+| employees/list/       | Mostrar una lista de empleado    |
+| employee/update/id    | Editar un empleado               |
+| employee/delete/id    | Eliminar un empleado             |
+| employee/activate/id  | Desactivar empleado              |
+| employee/deactivate/id| Desactivar un empleado           |
+
+
+### Imagenes de Referencia
+
+
+<img src=".\static\empleados.png">
+
+
+<img src=".\static\empleados2.png">
+
