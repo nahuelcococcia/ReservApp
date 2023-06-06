@@ -13,6 +13,8 @@ from reservas.models import Service, Client, Employee, Coordinator
 # API SERVICE
 @api_view(['GET'])
 def api_service(request):
+    # trae todos los servicios almacenados, luego se hace uso del modelo Serializer para poder luego retornar un json al cliente
+    # en caso de fallar devuelve un codigo 500
     try:
         services = Service.objects.all()
 
@@ -23,6 +25,9 @@ def api_service(request):
 
 @api_view(['GET'])
 def api_service_id(request, service_id):
+    # Mediante un id, se busca el servicio
+    # luego hace uso del modelo Serializer para luego retornar un json al cliente
+    # en caso de no encontrar devuelve un codigo 404
     try:
         service = Service.objects.get(id=service_id)
         serializer = ServiceSerializer(service)
@@ -34,6 +39,8 @@ def api_service_id(request, service_id):
 # API CLIENT
 
 def api_client(request):
+    # trae todos los clientes almacenados, luego se hace uso del modelo Serializer para poder luego retornar un json al cliente
+    # en caso de no encontrar devuelve un codigo 404
     clients = Client.objects.all()
     try:
         serializer = ClientSerializer(clients, many=True)
@@ -44,6 +51,8 @@ def api_client(request):
 
 # API EMPLOYEE
 def api_employee(request):
+    # trae todos los empleados almacenados, luego se hace uso del modelo Serializer para poder luego retornar un json al cliente
+    # en caso de no encontrar devuelve un codigo 404
     try:
         employees = Employee.objects.all()
         serializer = EmployeeSerializer(employees, many=True)
@@ -56,6 +65,8 @@ def api_employee(request):
 # API COORDINATOR
 
 def api_coordinator(request):
+    # trae todos los coordinadores almacenados, luego se hace uso del modelo Serializer para poder luego retornar un json al cliente
+    # en caso de no encontrar devuelve un codigo 404
     try:
         coordinators = Coordinator.objects.all()
         serializer = CoordinatorSerializer(coordinators, many=True)

@@ -28,3 +28,36 @@ Activar el entorno virtual
 Correr el servidor
 
 > python manage.py runserver
+
+## API
+
+<table>
+    <thead>
+    <tr>
+        <th>URL</th>
+        <th>Descripcion</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><p>localhost:8000/api/employees</p></td>
+            <td><p>Trae una lista con todos los empleados que estan en la base de datos. Devuelve devuelve un codigo 500 en caso de no poder.</p></td>
+        </tr>
+        <tr>
+            <td><p>localhost:8000/api/clients</p></td>
+            <td><p>Trae una lista con todos los clientes que estan en la base de datos. Devuelve devuelve un codigo 500 en caso de no poder</p></td>
+        </tr>
+        <tr>
+            <td><p>localhost:8000/api/coordinators</p></td>
+            <td><p>Trae una lista con todos los coordinadores que estan en la base de datos. Devuelve devuelve un codigo 500 en caso de no poder</p></td>
+        </tr>
+        <tr>
+            <td><p>localhost:8000/api/services</p></td>
+            <td><p>Trae una lista con todos los servicios que estan en la base de datos. Devuelve devuelve un codigo 500 en caso de no poder</p></td>
+        </tr>
+        <tr>
+            <td><p>localhost:8000/api/services/id</p></td>
+            <td><p>Pasando el id por url, devuelve un determinado servicio. Devulve un codigo 404 en caso de encontrar el servicio.</p></td>
+        </tr>
+    </tbody>
+</table>
