@@ -28,3 +28,27 @@ Activar el entorno virtual
 Correr el servidor
 
 > python manage.py runserver
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+# Módulo de Clientes
+
+Este proyecto contiene un módulo de Clientes que proporciona funcionalidades específicas relacionadas con la gestión de clientes. En este modulo podemos crear, editar, borar, activar y desactivar clientes
+por medio de las siguientes urls  
+
+| url                   | Accion                           |
+|-----------------------|----------------------------------|
+| client/new            | Crear un nuevo cliente           |
+| clients/list          | Mostrar una lista de cliente     |
+| client/update/id      | Editar un cliente                |
+| clients/delete/id     | Eliminar un cliente              |
+| client/activate/id    | Desactivar cliente               |
+| client/deactivate/id  | Desactivar un cliente            |
+
+### Imagenes de referencia  
+
+<img src=".\static\clientes.png">
+
+
+<img src=".\static\clientes2.png">
+
