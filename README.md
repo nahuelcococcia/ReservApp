@@ -27,10 +27,12 @@ Activar el entorno virtual
 
 Correr el servidor
 
-> python manage.py runserver
+> python manage.py runserver  
 
+---
 
 ## Pagina Principal
+
 
 Desde esta pagina podemos acceder a los distintos modulos, tambien se pueden visualizar algunas aclaraciones importantes.  
 
@@ -41,6 +43,33 @@ Desde esta pagina podemos acceder a los distintos modulos, tambien se pueden vis
 * HomePage en pantallas chicas  
 ![](/static/Home2.png)  
 
+---
+
+# Modulo Empleados 
+
+Este proyecto contiene un módulo de Empleados que proporciona funcionalidades específicas relacionadas con la gestión de clientes. En este modulo podemos crear, editar, borar, activar y desactivar empleados
+por medio de las siguientes urls 
+
+
+| url                   | Accion                           |
+|-----------------------|----------------------------------|
+| employee/new/         | Crear un nuevo empleado          |
+| employees/list/       | Mostrar una lista de empleado    |
+| employee/update/id    | Editar un empleado               |
+| employee/delete/id    | Eliminar un empleado             |
+| employee/activate/id  | Desactivar empleado              |
+| employee/deactivate/id| Desactivar un empleado           |
+
+
+### Imagenes de Referencia
+
+
+<img src=".\static\empleados.png">
+
+
+<img src=".\static\empleados2.png">  
+
+---
 
 ## Modulo Coordinador
 
@@ -61,8 +90,29 @@ por medio de las siguientes urls
 [](./static/Coordinadores2.png)
 Se utiliza el mismo formulario para crear y para actualizar, las unicas diferencia son:
 * Que el formulario para actualizar contendra los datos almacenados del registro que se desea actualizar.
-* El boton para confirmar dicha actualizacion posee la leyenda actualizar
+* El boton para confirmar dicha actualizacion posee la leyenda actualizar  
+
+---
+
+# Módulo de Clientes
+
+Este proyecto contiene un módulo de Clientes que proporciona funcionalidades específicas relacionadas con la gestión de clientes. En este modulo podemos crear, editar, borar, activar y desactivar clientes
+por medio de las siguientes urls  
+
+| url                   | Accion                           |
+|-----------------------|----------------------------------|
+| client/new            | Crear un nuevo cliente           |
+| clients/list          | Mostrar una lista de cliente     |
+| client/update/id      | Editar un cliente                |
+| clients/delete/id     | Eliminar un cliente              |
+| client/activate/id    | Desactivar cliente               |
+| client/deactivate/id  | Desactivar un cliente            |
+
+### Imagenes de referencia  
+
+<img src=".\static\clientes.png">
 
 
+<img src=".\static\clientes2.png">
 
-
+---
