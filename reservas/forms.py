@@ -26,6 +26,7 @@ class EmployeeForm(ModelForm):
                 'class': 'form-control',
                 "type" : "number",
                 'min': '1',
+                'max': '2147483647',
             }),
 
         }
@@ -55,6 +56,7 @@ class CoordinatorForm(ModelForm):
                 'class': 'form-control',
                 'type': 'number',
                 'min': '1',
+                'max': '2147483647',
             }),
         }
 
@@ -102,7 +104,8 @@ class ServiceForm(ModelForm):
             'price': forms.TextInput(attrs={
                 'class': 'form-control',
                 'type': 'number',
-                'min': 1
+                'min': '1',
+                'max': '2147483647',
             })
         }
         
@@ -139,7 +142,8 @@ class ReserveServiceForm(ModelForm):
             'price': forms.TextInput(attrs={
                 'class': 'form-control',
                 'type': 'number',
-                'min': 1
+                'min': '1',
+                'max': '2147483647',
             })
         }
 
