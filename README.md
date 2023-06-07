@@ -31,15 +31,15 @@ Correr el servidor
 
 
 ## Pagina Principal
-        URL : ./
+
 Desde esta pagina podemos acceder a los distintos modulos, tambien se pueden visualizar algunas aclaraciones importantes.  
 
-### Imagenes de referencias 
+### Imagenes de referencia 
 
 * HomePage en pantallas grandes (width : 920 px )  
-![](C:\Pesonal\ReservApp\static\Pagina-Principal.png)  
+![](/static/Home1.png)  
 * HomePage en pantallas chicas  
-![](C:\Pesonal\ReservApp\static\Pagina-Principal2.png)  
+![](/static/Home2.png)  
 
 
 ## Modulo Coordinador
@@ -56,7 +56,7 @@ por medio de las siguientes urls
 | coordinator/activate/id   | Activa un Coordinador            |
 | coordinator/deactivate/id | Desactiva un Coordinador         |
 
-### Imagenes de referencias  
+### Imagenes de referencia  
 [](./static/Coordinadores1.png)
 [](./static/Coordinadores2.png)
 Se utiliza el mismo formulario para crear y para actualizar, las unicas diferencia son:
