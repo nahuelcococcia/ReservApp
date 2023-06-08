@@ -3,34 +3,19 @@
 <div class="p-3 m-3">
     <h1>ReservApp</h1>
     <p>
-        ReservApp es una aplicación desarrollada en el año 2023, utilizando Django. Sirve fundamentalmente para registrar reservas de servicios.
+        ReservApp es una aplicación destinada a registrar <a href="{% url 'reserves-list' %}">Reservas de servicio</a>, desarrollada en Python y utilizando Django.
         <br>
         <br>
-        Para empezar a utilizarla debes tener en cuenta los siguientes puntos:
     </p>
-    <ul>
-        <li>
-            Una <strong>Reserva de servicio</strong> necesita que existan al menos 1 <strong>Cliente</strong>, 1 <strong>Empleado</strong>, 1 <strong>Servicio</strong> y 1 <strong>Coordinador</strong>.
-        </li>
-
-        <li>
-            Estos <strong>elementos necesarios</strong>, deben ser elementos que estén <strong>activos</strong> al momento de <strong>crear la Reserva</strong>.
-        </li>
-
-        <li>
-            Si una <strong>Reserva es creada</strong> y luego alguno de los elementos necesarios es <strong>desactivado</strong>, la Reserva <strong>también se desactivará</strong>.
-        </li>
-
-        <li>
-            Si una <strong>Reserva es creada</strong> y luego alguno de los elementos necesarios es <strong>eliminado</strong>, la Reserva <strong>también se eliminará</strong>.
-        </li>
-
-        <li>
-            Para <strong>crear</strong> cualquiera de los elementos mencionados (inclusive las reservas) debes hacer clic sobre el nombre del elemento y luego apretar el botón agregar nuevo/a
-        </li>
-    </ul>
-
+    <p>
+        ¿Quieres utilizarla? ¡Es sencillo! primero deberás crear lo siguiente:
+        <ul>
+            <li> Un <a href="{% url 'clients-list' %}">Cliente</a></li>
+            <li> Un <a href="{% url 'coordinators-list' %}">Coordinador</a></li>
+            <li> Un <a href="{% url 'employee-list' %}">Empleado</a></li>
+            <li> Un <a href="{% url 'services-list' %}">Servicio</a></li>
+        </ul>
+        Con esos elementos creados podrás crear tu primer <a href="{% url 'reserves-list' %}">Reserva</a>
+    </p>
 </div>
-
-
 {% endblock %}
