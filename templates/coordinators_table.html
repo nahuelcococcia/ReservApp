@@ -18,9 +18,9 @@
             <td class="py-3 col-1" >{{ coordinator.created_at|date:'d/m/Y' }}</td>
             <td class="py-3 col-1" >
                 {% if coordinator.is_active %}
-                    <i class="fa-solid fa-square-check" style="color: #0d6efd;" title="Esta activo"></i>
+                    <i class="fa-solid fa-square-check" style="color: #0d6efd;" title="Activo"></i>
                 {% else %}
-                    <i class="fa-solid fa-rectangle-xmark" style="color: #dc3545" title="No esta activo"></i>
+                    <i class="fa-solid fa-rectangle-xmark" style="color: #dc3545" title="Inactivo"></i>
                 {% endif %}
             </td>
             <td class="col-2">

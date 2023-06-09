@@ -15,6 +15,7 @@ def handler404(request, exception):
         'url_prev': 'home'
     })
 
+
 # EMPLOYEE SECTION
 # View para listar los Empleados
 def employees_view(request):

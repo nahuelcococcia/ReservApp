@@ -1,38 +1,45 @@
-<table class="table .table-sm text-center" >
+<table class="table table-sm text-center">
     <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nombre </th>
-            <th scope="col">Descripción</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Estado</th>
-            <th scope="col">Acciones</th>
-        </tr>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Acciones</th>
+    </tr>
     </thead>
     <tbody>
     {% for service in services %}
-        <tr class="align-middle">
-            <th class="py-3 col-1" >{{ service.id }}</th>
-            <td class="py-3 col-2" >{{ service.name }}</td>
-            <td class="py-3 col-5" >{{ service.description }}</td>
-            <td class="py-3 col-1" >{{ service.price }}</td>
-            <td class="py-3 col-1" >
-                {% if service.is_active %}
-                    <i class="fa-solid fa-square-check" style="color: #0d6efd;" title="está activo"></i>
-                {% else %}
-                    <i class="fa-solid fa-rectangle-xmark" style="color: #dc3545" title="está inactivo"></i>
-                {% endif %}
-            </td>
-            <td class="col-2">
-                <a class="p-2" href="{% url 'service-delete' service.id %}" onclick="return confirm('¿Esta seguro de eliminar?')"><i class="fa-solid fa-trash-can fa-lg" style="color: #fd0808;" title="Eliminar Servicio"></i></a>
-                <a href="{% url 'service-update' service.id %}"><i class="fa-solid fa-pen-to-square fa-lg" style="color: #37ff00;" title="Actualizar Servicio"></i></a>
-                {% if service.is_active %}
-                <a href="{% url 'service-deactivate' service.id %}" class="btn btn-danger" style="width:100px;" title="Desactivar Servicio">Desactivar</a>
-                {% else %}
-                <a href="{% url 'service-activate' service.id %}" class="btn btn-primary" style="width:100px;" title="Activar Servicio">Activar</a>
-                {% endif %}
-            </td>
-        </tr>
+    <tr class="align-middle">
+        <th class="py-3 col-1">{{ service.id }}</th>
+        <td class="py-3 col-2" title="{{ service.description }}">{{ service.name }}</td>
+        <td class="py-3 col-1">{{ service.description }}</td>
+        <td class="py-3 col-1">{{ service.price }}</td>
+        <td class="py-3 col-1">
+            {% if service.is_active %}
+            <i class="fa-solid fa-square-check" style="color: #0d6efd;" title="Activo"></i>
+            {% else %}
+            <i class="fa-solid fa-rectangle-xmark" style="color: #dc3545" title="Inactivo"></i>
+            {% endif %}
+        </td>
+        <td class="col-2">
+            <a class="p-2" href="{% url 'service-delete' service.id %}"
+               onclick="return confirm('¿Esta seguro de eliminar?')"><i class="fa-solid fa-trash-can fa-lg"
+                                                                        style="color: #fd0808;"
+                                                                        title="Eliminar Servicio"></i></a>
+            <a href="{% url 'service-update' service.id %}"><i class="fa-solid fa-pen-to-square fa-lg"
+                                                               style="color: #37ff00;"
+                                                               title="Actualizar Servicio"></i></a>
+            {% if service.is_active %}
+            <a href="{% url 'service-deactivate' service.id %}" class="btn btn-danger" style="width:100px;"
+               title="Desactivar Servicio">Desactivar</a>
+            {% else %}
+            <a href="{% url 'service-activate' service.id %}" class="btn btn-primary" style="width:100px;"
+               title="Activar Servicio">Activar</a>
+            {% endif %}
+        </td>
+    </tr>
     {% endfor %}
     </tbody>
 </table>
