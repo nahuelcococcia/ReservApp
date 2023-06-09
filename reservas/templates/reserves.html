@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block 'content' %}
     <div class="p-5">
-        <a class="btn btn-primary m-2" href="{% url 'reserve-create' %}" title="Agregar Reserva">Agregar Nueva</a>
+        <a class="btn btn-secondary m-2" href="{% url 'reserve-create' %}" title="Agregar Reserva">Agregar Nueva</a>
         {% if reserves %}
             <h2 class="p-3">Reservas</h2>
             {% include 'reserves_table.html' %}

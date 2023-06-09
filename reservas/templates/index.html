@@ -1,22 +1,25 @@
 {% extends 'base.html' %}
 {% block 'content' %}
-<div class="p-3 m-3">
-    <h1>ReservApp</h1>
-    <p>
-        ReservApp es una aplicación destinada a registrar <a href="{% url 'reserves-list' %}">Reservas de servicio</a>,
-        desarrollada en Python y utilizando Django.
-        <br>
-        <br>
-    </p>
-    <p>
-        ¿Quieres utilizarla? ¡Es sencillo! primero deberás crear lo siguiente:
-        <ul>
-            <li> Un <a href="{% url 'clients-list' %}">Cliente</a></li>
-            <li> Un <a href="{% url 'coordinators-list' %}">Coordinador</a></li>
-            <li> Un <a href="{% url 'employee-list' %}">Empleado</a></li>
-            <li> Un <a href="{% url 'services-list' %}">Servicio</a></li>
+<div id="home" >
+    <div class="top">
+        <h1>Reserv<span>App</span></h1>
+        <p>
+            ReservApp es una aplicación destinada a registrar Reservas de servicio</a>,
+            desarrollada en Python y utilizando Django.
+            <br>
+            <br>
+        </p>
+    </div>
+    <div class="midle">
+        <p>¿Quieres utilizarla? <span>¡Es sencillo!</span> primero deberás crear lo siguiente:</p>
+        <ul class="list">
+            <li> Un <a class="btn btn-secondary m-1 p-2" href="{% url 'clients-list' %}">Cliente</a></li>
+            <li> Un <a class="btn btn-secondary m-1 p-2" href="{% url 'coordinators-list' %}">Coordinador</a></li>
+            <li> Un <a class="btn btn-secondary m-1 p-2" href="{% url 'employee-list' %}">Empleado</a></li>
+            <li> Un <a class="btn btn-secondary m-1 p-2" href="{% url 'services-list' %}">Servicio</a></li>
         </ul>
-        Con esos elementos creados podrás crear tu primer <a href="{% url 'reserves-list' %}">Reserva</a>
-    </p>
+        <p>Con esos elementos creados podrás crear tu primer <a class="btn btn-secondary m-1 p-2" href="{% url 'reserves-list' %}">Reserva</a></p>
+    </div>
+
 </div>
 {% endblock %}
