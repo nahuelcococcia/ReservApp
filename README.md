@@ -1,4 +1,4 @@
-# Pagina de reservas ReservApp
+# ReservApp
 
 ## Instalación
 
@@ -34,46 +34,46 @@ Correr el servidor
 ## Pagina Principal
 
 
-Desde esta pagina podemos acceder a los distintos modulos, tambien se pueden visualizar algunas aclaraciones importantes.  
+Desde esta página podemos acceder a los distintos módulos, también se pueden visualizar algunas aclaraciones importantes.  
 
-### Imagenes de referencia 
+### Imágenes de referencia 
 
 * HomePage en pantallas grandes (width : 920 px )  
-![](/static/Home1.png)  
+![](/static/imagenes%20de%20referencia/Home1.png)  
 * HomePage en pantallas chicas  
-![](/static/Home2.png)  
+![](/static/imagenes%20de%20referencia/Home2.png)  
 
 ---
 
 # Modulo Empleados 
 
-Este proyecto contiene un módulo de Empleados que proporciona funcionalidades específicas relacionadas con la gestión de clientes. En este modulo podemos crear, editar, borar, activar y desactivar empleados
+Este proyecto contiene un módulo de Empleados que proporciona funcionalidades específicas relacionadas con la gestión de clientes. En este módulo podemos crear, editar, borrar, activar y desactivar empleados
 por medio de las siguientes urls 
 
 
-| url                   | Accion                           |
-|-----------------------|----------------------------------|
-| employee/new/         | Crear un nuevo empleado          |
-| employees/list/       | Mostrar una lista de empleado    |
-| employee/update/id    | Editar un empleado               |
-| employee/delete/id    | Eliminar un empleado             |
-| employee/activate/id  | Desactivar empleado              |
-| employee/deactivate/id| Desactivar un empleado           |
+| url                    | Acción                        |
+|------------------------|-------------------------------|
+| employee/new/          | Crear un nuevo empleado       |
+| employees/list/        | Mostrar una lista de empleado |
+| employee/update/id     | Editar un empleado            |
+| employee/delete/id     | Eliminar un empleado          |
+| employee/activate/id   | Desactivar empleado           |
+| employee/deactivate/id | Desactivar un empleado        |
 
 
-### Imagenes de Referencia
+### Imágenes de Referencia
 
 
-<img src=".\static\empleados.png">
+<img src=".\static\imagenes de referencia\empleados.png">
 
 
-<img src=".\static\empleados2.png">  
+<img src=".\static\imagenes de referencia\empleados2.png">  
 
 ---
 
 ## Modulo Coordinadores
 
-En este modulo podemos crear, editar, borrar, activar y desactivar coordinadores 
+En este módulo podemos crear, editar, borrar, activar y desactivar coordinadores 
 por medio de las siguientes urls  
   
 | url                       | Acción                           |
@@ -85,78 +85,79 @@ por medio de las siguientes urls
 | coordinator/activate/id   | Activa un Coordinador            |
 | coordinator/deactivate/id | Desactiva un Coordinador         |
 
-### Imagenes de referencia  
-<img src=".\static\Coordinadores1.png">
-<img src=".\static\Coordinadores2.png">
-Se utiliza el mismo formulario para crear y para actualizar, las unicas diferencia son:
-* Que el formulario para actualizar contendra los datos almacenados del registro que se desea actualizar.
-* El boton para confirmar dicha actualizacion posee la leyenda actualizar  
+### Imágenes de referencia  
+<img src=".\static\imagenes de referencia\Coordinadores1.png">
+<img src=".\static\imagenes de referencia\Coordinadores2.png">
+
+Se utiliza el mismo formulario para crear y para actualizar, las únicas diferencia son:
+* Que el formulario para actualizar contendrá los datos almacenados del registro que se desea actualizar.
+* El botón para confirmar dicha actualización posee la leyenda actualizar  
 
 ---
 
 # Módulo de Clientes
 
-Este proyecto contiene un módulo de Clientes que proporciona funcionalidades específicas relacionadas con la gestión de clientes. En este modulo podemos crear, editar, borar, activar y desactivar clientes
+Este proyecto contiene un módulo de Clientes que proporciona funcionalidades específicas relacionadas con la gestión de clientes. En este módulo podemos crear, editar, borrar, activar y desactivar clientes
 por medio de las siguientes urls  
 
-| url                   | Accion                           |
-|-----------------------|----------------------------------|
-| client/new            | Crear un nuevo cliente           |
-| clients/list          | Mostrar una lista de cliente     |
-| client/update/id      | Editar un cliente                |
-| clients/delete/id     | Eliminar un cliente              |
-| client/activate/id    | Desactivar cliente               |
-| client/deactivate/id  | Desactivar un cliente            |
+| url                   | Acción                       |
+|-----------------------|------------------------------|
+| client/new            | Crear un nuevo cliente       |
+| clients/list          | Mostrar una lista de cliente |
+| client/update/id      | Editar un cliente            |
+| clients/delete/id     | Eliminar un cliente          |
+| client/activate/id    | Desactivar cliente           |
+| client/deactivate/id  | Desactivar un cliente        |
 
-### Imagenes de referencia  
+### Imágenes de referencia  
 
-<img src=".\static\clientes.png">
+<img src=".\static\imagenes de referencia\clientes.png">
 
 
-<img src=".\static\clientes2.png">
+<img src=".\static\imagenes de referencia\clientes2.png">
 
 ---
 
-## Modulo Servicios
-En este modulo podemos crear, editar, borar, activar y desactivar servicios 
+## Módulo Servicios
+En este módulo podemos crear, editar, borrar, activar y desactivar servicios 
 por medio de las siguientes urls  
 </br>
 
-| url                   | Accion                           |
-|-----------------------|----------------------------------|
-| service/new           | Crear un nuevo servicio          |
-| services/list         | Mostrar una lista de servicios   |
- | service/update/id     | Editar un servicio               |
-| service/delete/id     | Eliminar un servicio             |
-| service/activate/id   | Activar un servicio              |
-| service/deactivate/id | Desactivar un servicio           |
+| url                   | Acción                         |
+|-----------------------|--------------------------------|
+| service/new           | Crear un nuevo servicio        |
+| services/list         | Mostrar una lista de servicios |
+| service/update/id     | Editar un servicio             |
+| service/delete/id     | Eliminar un servicio           |
+| service/activate/id   | Activar un servicio            |
+| service/deactivate/id | Desactivar un servicio         |
 
-### Imagenes de referencia
-<img src=".\static\service.png">  
+### Imágenes de referencia
+<img src=".\static\imagenes de referencia\service.png">  
 
  
-<img src=".\static\service_form.png">
+<img src=".\static\imagenes de referencia\service_form.png">
 
 ---
 
-## Modulo Reservas
-En este modulo podemos crear, editar y  borar reservas
+## Módulo Reservas
+En este módulo podemos crear, editar y borrar reservas
 por medio de las siguientes urls  
 </br>
 
-| url                   | Accion                        |
+| url                   | Acción                        |
 |-----------------------|-------------------------------|
 | reserve/new           | Crear una nueva reserva       |
 | reserves/list         | Mostrar una lista de reservas |
- | reserve/update/id     | Editar una reserva            |
+| reserve/update/id     | Editar una reserva            |
 | reserve/delete/id     | Eliminar una reserva          |
  
-### Imagenes de referencia
+### Imágenes de referencia
 
-<img src=".\static\reserve.png">  
+<img src=".\static\imagenes de referencia\reserve.png">  
 
  
-<img src=".\static\reserve_form.png">
+<img src=".\static\imagenes de referencia\reserve_form.png">
 
 ---
 
@@ -166,29 +167,29 @@ por medio de las siguientes urls
     <thead>
     <tr>
         <th>URL</th>
-        <th>Descripcion</th>
+        <th>Descripción</th>
     </tr>
     </thead>
     <tbody>
         <tr>
             <td><p>localhost:8000/api/employees</p></td>
-            <td><p>Trae una lista con todos los empleados que estan en la base de datos. Devuelve devuelve un codigo 500 en caso de no poder.</p></td>
+            <td><p>Trae una lista con todos los empleados que están en la base de datos. Devuelve un código 500 en caso de no poder.</p></td>
         </tr>
         <tr>
             <td><p>localhost:8000/api/clients</p></td>
-            <td><p>Trae una lista con todos los clientes que estan en la base de datos. Devuelve devuelve un codigo 500 en caso de no poder</p></td>
+            <td><p>Trae una lista con todos los clientes que están en la base de datos. Devuelve un código 500 en caso de no poder</p></td>
         </tr>
         <tr>
             <td><p>localhost:8000/api/coordinators</p></td>
-            <td><p>Trae una lista con todos los coordinadores que estan en la base de datos. Devuelve devuelve un codigo 500 en caso de no poder</p></td>
+            <td><p>Trae una lista con todos los coordinadores que están en la base de datos. Devuelve un código 500 en caso de no poder</p></td>
         </tr>
         <tr>
             <td><p>localhost:8000/api/services</p></td>
-            <td><p>Trae una lista con todos los servicios que estan en la base de datos. Devuelve devuelve un codigo 500 en caso de no poder</p></td>
+            <td><p>Trae una lista con todos los servicios que están en la base de datos. Devuelve un código 500 en caso de no poder</p></td>
         </tr>
         <tr>
             <td><p>localhost:8000/api/services/id</p></td>
-            <td><p>Pasando el id por url, devuelve un determinado servicio. Devulve un codigo 404 en caso de encontrar el servicio.</p></td>
+            <td><p>Pasando el ID por url, devuelve un determinado servicio. Devuelve un código 404 en caso de encontrar el servicio.</p></td>
         </tr>
     </tbody>
 </table>
@@ -243,8 +244,8 @@ A continuación se realizará un resumen de los modelos y los atributos:
 
 ### Imágenes de referencia
 * Consola pidiendo nombre y contraseña.  
-![](/static/Admin1.png)
+![](/static/imagenes%20de%20referencia/Admin1.png)
 * Pantalla del Admin mostrando los modelos  
-![](/static/Admin2.png)  
+![](/static/imagenes%20de%20referencia/Admin2.png)  
 * Posibles acciones desde el Admin  
-![](/static/Admin3.png) 
+![](/static/imagenes%20de%20referencia/Admin3.png) 
