@@ -7,24 +7,25 @@
       <a class="navbar-brand" href="{% url 'home' %}">Inicio</a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'employee-list' %}">Empleados</a>
+          <a class="nav-link" data-active="{{ active }}" aria-current="page" href="{% url 'employee-list' %}">Empleados</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'coordinators-list' %}">Coordinadores</a>
+          <a class="nav-link" data-active="{{ active }}" aria-current="page" href="{% url 'coordinators-list' %}">Coordinadores</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'services-list' %}">Servicios</a>
+          <a class="nav-link" data-active="{{ active }}" aria-current="page" href="{% url 'services-list' %}">Servicios</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'clients-list' %}">Clientes</a>
+          <a class="nav-link" data-active="{{ active }}" aria-current="page" href="{% url 'clients-list' %}">Clientes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'reserves-list' %}">Reservas</a>
+          <a class="nav-link" data-active="{{ active }}" aria-current="page" href="{% url 'reserves-list' %}">Reservas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'admin:index' %}">Admin</a>
+          <a class="nav-link" data-active="{{ active }}" aria-current="page" href="{% url 'admin:index' %}">Admin</a>
         </li>
       </ul>
+      <img width="160px" height="40px" src=".\static\reservap2.png" alt="logo">
     </div>
   </div>
 </nav>

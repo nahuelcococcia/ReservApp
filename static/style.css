@@ -1,0 +1,95 @@
+/* Custom default button */
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:focus {
+  color: #fff;
+  text-shadow: none; /* Prevent inheritance from `body` */
+  background-color: #984bf3;
+  padding: .6rem 1rem;
+  border: .05rem solid #9b5de5;
+  font-weight:500;
+}
+
+
+body{
+    background-color: #dbc4ff;
+}
+
+.table{
+    background-color: #fff;
+    border-radius:.5rem;
+}
+
+.container{
+    background-color: #fff;
+    border-radius: .5rem;
+}
+
+.active{
+    filter: opacity(1);
+    background-color: #9f86c0;
+    font-weight: 600;
+}
+
+.navbar-nav .nav-link.active{
+    color: #fff;
+}
+
+.nav-link{
+    font-weight:500;
+    transition: background 200ms linear;
+}
+
+
+.nav-link:hover{
+    background-color: #c8acee;
+    color: #fff;
+}
+
+#home{
+    font-weight: 400;
+    letter-spacing: .6px;
+}
+
+#home .list{
+    margin-left: 2rem;
+}
+
+#home h1 span{
+    color: #fff;
+}
+
+.midle{
+    padding:3rem 0;
+    background-color: #fff;
+    width:100%;
+}
+
+.midle p span{
+    font-weight: 500;
+}
+
+
+.table .btn{
+    margin-left: 1rem;
+}
+
+@media (min-width: 800px) {
+
+  #home{
+    margin: 0;
+    padding-top:4rem;
+    font-size:20px;
+  }
+
+  #home h1{
+    font-size: 48px;
+    letter-spacing: .1rem;
+    margin-bottom:1rem;
+  }
+
+  #home > * {
+     padding-left:12rem;
+  }
+
+}

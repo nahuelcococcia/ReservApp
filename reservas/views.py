@@ -24,7 +24,8 @@ def employees_view(request):
 
     # Renderizamos el template 'employees.html' y como contexto enviamos todos los empleados obtenidos
     return render(request, 'employees.html', {
-        'employees': employees
+        'employees': employees,
+        'active': request.path
     })
 
 
@@ -135,7 +136,8 @@ def coordinators_view(request):
 
     # Renderizamos el template 'coordinators.html' y como contexto enviamos todos los registros obtenidos
     return render(request, 'coordinators.html', {
-        'coordinators': coordinators
+        'coordinators': coordinators,
+        'active': request.path
     })
 
     # En el template se creará una tabla, teniendo como columnas a los atributos que nos interesan mostrar y como
@@ -248,7 +250,8 @@ def clients_view(request):
     clients = Client.objects.all()  # Obtenemos todos los Clientes desde la BD
     # Renderizamos el template 'clients.html' y como contexto enviamos todos los clientes obtenidos
     return render(request, 'clients.html', {
-        'clients': clients
+        'clients': clients,
+        'active': request.path
     })
 
 
@@ -359,7 +362,8 @@ def service_view(request):
     services = Service.objects.all()
     # Renderizamos el template 'services.html' y como contexto enviamos todos los registros obtenidos
     return render(request, 'services.html', {
-        'services': services
+        'services': services,
+        'active': request.path
     })
 
 
@@ -473,7 +477,8 @@ def reserves_view(request):
     # Renderizamos el template 'reserves.html' y como contexto enviamos todos los registros obtenidos
 
     return render(request, 'reserves.html', {
-        'reserves': reserves
+        'reserves': reserves,
+        'active': request.path
     })
 
 
