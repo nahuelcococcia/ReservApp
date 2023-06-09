@@ -1,9 +1,8 @@
-<table class="table table-sm text-center">
+<table class="table table-sm text-center table-hover rounded">
     <thead>
     <tr>
         <th scope="col">#</th>
         <th scope="col">Nombre</th>
-        <th scope="col">Descripción</th>
         <th scope="col">Precio</th>
         <th scope="col">Estado</th>
         <th scope="col">Acciones</th>
@@ -12,18 +11,17 @@
     <tbody>
     {% for service in services %}
     <tr class="align-middle">
-        <th class="py-3 col-1">{{ service.id }}</th>
-        <td class="py-3 col-2" title="{{ service.description }}">{{ service.name }}</td>
-        <td class="py-3 col-1">{{ service.description }}</td>
-        <td class="py-3 col-1">{{ service.price }}</td>
-        <td class="py-3 col-1">
+        <th class="py-3">{{ service.id }}</th>
+        <td class="py-3" title="{{ service.description }}">{{ service.name }}</td>
+        <td class="py-3">{{ service.price }}</td>
+        <td class="py-3">
             {% if service.is_active %}
             <i class="fa-solid fa-square-check" style="color: #0d6efd;" title="Activo"></i>
             {% else %}
             <i class="fa-solid fa-rectangle-xmark" style="color: #dc3545" title="Inactivo"></i>
             {% endif %}
         </td>
-        <td class="col-2">
+        <td class="">
             <a class="p-2" href="{% url 'service-delete' service.id %}"
                onclick="return confirm('¿Esta seguro de eliminar?')"><i class="fa-solid fa-trash-can fa-lg"
                                                                         style="color: #fd0808;"
