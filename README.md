@@ -86,8 +86,8 @@ por medio de las siguientes urls
 | coordinator/deactivate/id | Desactiva un Coordinador         |
 
 ### Imagenes de referencia  
-[](./static/Coordinadores1.png)
-[](./static/Coordinadores2.png)
+<img src=".\static\Coordinadores1.png">
+<img src=".\static\Coordinadores2.png">
 Se utiliza el mismo formulario para crear y para actualizar, las unicas diferencia son:
 * Que el formulario para actualizar contendra los datos almacenados del registro que se desea actualizar.
 * El boton para confirmar dicha actualizacion posee la leyenda actualizar  

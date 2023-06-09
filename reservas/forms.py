@@ -22,10 +22,10 @@ class EmployeeForm(ModelForm):
             'lastname': forms.TextInput(attrs={
                 'class': 'form-control',
             }),
-            'file_number': forms.TextInput(attrs={
+            'file_number': forms.NumberInput(attrs={
                 'class': 'form-control',
-                "type" : "number",
                 'min': '1',
+                'max': '2147483647',
             }),
 
         }
@@ -44,17 +44,15 @@ class CoordinatorForm(ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': 'form-control',
-                'type': 'text'
 
             }),
             'lastname': forms.TextInput(attrs={
                 'class': 'form-control',
-                'type': 'text'
             }),
-            'dni_number': forms.TextInput(attrs={
+            'dni_number': forms.NumberInput(attrs={
                 'class': 'form-control',
-                'type': 'number',
                 'min': '1',
+                'max': '2147483647',
             }),
         }
 
@@ -102,7 +100,8 @@ class ServiceForm(ModelForm):
             'price': forms.TextInput(attrs={
                 'class': 'form-control',
                 'type': 'number',
-                'min': 1
+                'min': '1',
+                'max': '2147483647',
             })
         }
         
@@ -139,7 +138,8 @@ class ReserveServiceForm(ModelForm):
             'price': forms.TextInput(attrs={
                 'class': 'form-control',
                 'type': 'number',
-                'min': 1
+                'min': '1',
+                'max': '2147483647',
             })
         }
 

@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.urls import path
 from reservas import views
 
+handler404 = views.handler404
+
 urlpatterns = [
     path('', views.index, name="home"),
     path('employee/new/', views.employee_register, name="employee-create"),

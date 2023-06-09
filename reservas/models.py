@@ -3,7 +3,7 @@ from django.db import models
 
 # Create your models here.
 class Service(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=100)
     description = models.CharField(max_length=200)
     price = models.IntegerField()
     is_active = models.BooleanField(default=True)
@@ -13,8 +13,8 @@ class Service(models.Model):
 
 
 class Client(models.Model):
-    name = models.CharField(max_length=55)
-    lastname = models.CharField(max_length=55)
+    name = models.CharField(max_length=50)
+    lastname = models.CharField(max_length=50)
     is_active = models.BooleanField(default=True)
 
     def fullname(self):
@@ -25,8 +25,8 @@ class Client(models.Model):
 
 
 class Employee(models.Model):
-    name = models.CharField(max_length=100)
-    lastname = models.CharField(max_length=100)
+    name = models.CharField(max_length=50)
+    lastname = models.CharField(max_length=50)
     file_number = models.IntegerField(unique=True, error_messages={
         'unique': "Ya existe Empleado con ese Numero de legajo."
     })
