@@ -1,17 +1,17 @@
-<table class="table text-center col-8" >
+<table class="table .table-sm text-center table-hover" >
     <thead>
         <tr>
-            <th scope="col" class="col-1">#</th>
-            <th scope="col" class="col-3">Nombre Completo</th>
-            <th scope="col" class="col-1">Estado</th>
-            <th scope="col" class="col-2">Acciones</th>
+            <th scope="col">#</th>
+            <th scope="col">Nombre Completo</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Acciones</th>
         </tr>
     </thead>
     <tbody>
     {% for client in clients %}
         <tr class="align-middle">
             <th class="py-3 col-1" >{{ client.id }}</th>
-            <td class="py-3 col-4" >{{ client.fullname }}</td>
+            <td class="py-3 col-8" >{{ client.fullname }}</td>
             <td class="py-3 col-1" >
                 {% if client.is_active %}
                     <i class="fa-solid fa-square-check" style="color: #0d6efd;" title="Activo"></i>
